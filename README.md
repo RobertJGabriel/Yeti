@@ -1,30 +1,25 @@
-Yeti 
-==========
 
-![Screenshot 1](http://www.projectbird.com/uploads/6/0/3/3/603320/3733704_orig.png "Screenshot 1")
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/gh-pages/assests/img/banner/headerYeti.png "Yeti")
 
 
-Yeti is a framwork for the hackable search engine built in PHP and JavaScript. It also hopes to allow to bring all Social Apis under one roof for searching.
+Yeti is a light weight framwork, that is designed to allow simple html files to linked up to database in matter of seconds. It also designed to give you the access needed to bring all social search engines under one roof.
 
 
 Features
 --------------
 
 - Search all major search engines.
-- See what all users are searching and what is popular
 - Added Social features.
 - Changes the background colour to make easier to read.
 - Render videos quicker
 - Scrap search engine links
-- Scrap and Download images.
+- Scrap and Download images to your search
 - Loads more ;)
 
 
 Upcoming Features
 -----------------
 
--  Bootstrap redesign
--  Improved design
 -  Installer
 -  Improved database.
 
@@ -39,13 +34,3 @@ Install
 - Place in htdocs folder
 - Import yeti.sql into databse.
 - All finished 
-
-
-
-
-Design guide line 
--------------
-
-![Screenshot 1](http://cdn04.androidauthority.net/wp-content/uploads/2014/12/google-search-material-concept-3.png "Screenshot 1")
-
-
