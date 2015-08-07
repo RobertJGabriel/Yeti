@@ -2,7 +2,7 @@
 
 
     include_once("database.php");
-    include_once("assests/third-party/twitter/twitter.php");
+    include_once("application/third-party/twitter/twitter.php");
 
     // -- Class Name : search
     // -- Purpose : 

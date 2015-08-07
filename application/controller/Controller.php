@@ -1,10 +1,10 @@
 <?php
 
-    include_once("assests/model/user.php");
-    include_once("assests/model/database.php");
-    include_once("assests/model/search.php");
-    include_once("assests/model/states.php");
-    include_once("assests/model/settings.php");
+    include_once("application/models/user.php");
+    include_once("application/models/database.php");
+    include_once("application/models/search.php");
+    include_once("application/models/states.php");
+    include_once("application/models/settings.php");
 
 // -- Class Name : Controller
 // -- Purpose : 
@@ -83,22 +83,22 @@
         function signinedIn($actions){
             switch ($actions) {
                 case "home":
-                    include_once( WEBSITE_PATH . 'assests/view/results.html');
+                    include_once( WEBSITE_PATH . 'application/views/results.html');
                     break;
                 case "logout":
                     $this->user->logout();
                     $number_of_users =  $this->database->count_amount_of_users();
                     $number_of_searches = $this->database->count_amount_of_searches();
-                    include_once(WEBSITE_PATH . 'assests/view/signin.html');
+                    include_once(WEBSITE_PATH . 'application/views/signin.html');
                     break;
                 case "settings":
-                    include_once(WEBSITE_PATH . 'assests/view/setting.html');
+                    include_once(WEBSITE_PATH . 'application/views/setting.html');
                     break;
                 case 'getSearch_Chart':
                     $this->states->search_chart();
                     break;
                 case 'charts':
-                    include_once(WEBSITE_PATH . 'assests/view/charts.html');
+                    include_once(WEBSITE_PATH . 'application/views/charts.html');
                     break;
                 case 'delete_account':
                     $this->user->delete_account();
@@ -109,7 +109,7 @@
                     break;
                 case 'search':
                     $this->search->add_search();
-                    include_once(WEBSITE_PATH . 'assests/view/results.html');
+                    include_once(WEBSITE_PATH . 'application/views/results.html');
                     break;
                 case 'webresults':
                     // $this->search->bing();
@@ -118,7 +118,7 @@
                 default:
                     $number_of_searches = $this->database->count_amount_of_searches();
                     $number_of_users =  $this->database->count_amount_of_users();
-                    include_once(WEBSITE_PATH .'assests/view/signin.html');
+                    include_once(WEBSITE_PATH .'application/views/signin.html');
                 }
 
         }
@@ -134,15 +134,15 @@
                     $this->user->sign_in();
                     break;
                 case 'signup':
-                    include_once('assests/view/signup.html');
+                    include_once('application/views/signup.html');
                     break;
                 case 'signinview':
                     $number_of_searches = $this->database->count_amount_of_searches();
                     $number_of_users =  $this->database->count_amount_of_users();
-                    include_once(WEBSITE_PATH . 'assests/view/signin.html');
+                    include_once(WEBSITE_PATH . 'application/views/signin.html');
                     break;
                 case 'search':
-                    include_once('assests/view/results.html');
+                    include_once('application/views/results.html');
                     break;
                 case 'register':
                     echo  $this->user->register_account();
@@ -150,7 +150,7 @@
                 default:
                     $number_of_searches = $this->database->count_amount_of_searches();
                     $number_of_users =  $this->database->count_amount_of_users();
-                    include_once(WEBSITE_PATH . 'assests/view/signin.html');
+                    include_once(WEBSITE_PATH . 'application/views/signin.html');
                 }
 
         }
