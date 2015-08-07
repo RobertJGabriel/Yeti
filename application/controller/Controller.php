@@ -5,6 +5,7 @@
     include_once("application/models/search.php");
     include_once("application/models/states.php");
     include_once("application/models/settings.php");
+        include_once("application/models/errors.php");
 
 // -- Class Name : Controller
 // -- Purpose : 
@@ -26,7 +27,7 @@
             $this->search = new search();
             $this->database = new database();
             $this->states = new states();
-            //   $this->showErrors();
+            $this->errors = new errors();
         }
 
 
@@ -44,15 +45,7 @@
         }
 
 
-// -- Function Name : showErrors
-// -- Params : 
-// -- Purpose : 
-        public
-        function showErrors(){
-            ini_set('display_errors',1);
-            ini_set('display_startup_errors',1);
-            error_reporting(-1);
-        }
+
 
 
 

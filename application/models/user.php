@@ -140,6 +140,22 @@
 
         }
 
+
+        public
+        function createFolder(){
+
+            $checkIfExists =  $this->database->checkIfExists();
+            $getCompanyName =  $this->database->createCompanyName();
+
+           if ($checkIfExists != '1' ){
+                mkdir("installations/" . companyName, 0700); //Creates Folders
+           }else {
+             echo 'Pick another name please ';
+            }
+        }
+
+
+
         public
 
 // -- Function Name : updateTwitter_Session
