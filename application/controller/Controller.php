@@ -1,20 +1,16 @@
 <?php
 
-    include_once("application/models/user.php");
-    include_once("application/models/database.php");
-    include_once("application/models/search.php");
-    include_once("application/models/states.php");
-    include_once("application/models/settings.php");
-    include_once("application/models/errors.php");
+        function __autoload($class_name) 
+        {
+           include_once("application/models/" . $class_name . ".php");
+        }
 
 // -- Class Name : Controller
 // -- Purpose : 
 // -- Created On : 
     class Controller {
-        var $user;
-        var $databae;
-        var $search;
-        var $pasturl ;
+        var $user,$databae,$search,$pasturl;
+
 
 
 // -- Function Name : __construct
@@ -26,9 +22,14 @@
             $this->user = new user();
             $this->search = new search();
             $this->database = new database();
+            $this->settings = new settings();
             $this->states = new states();
             $this->errors = new errors();
         }
+
+
+
+
 
 
 // -- Function Name : pastUrl

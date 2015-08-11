@@ -1,6 +1,22 @@
 <?php
 
-	define("WEBSITE_PATH","");
+    class settings{
+
+// -- Function Name : __construct
+// -- Params : 
+// -- Purpose : 
+        public
+        function __construct() {
+			define("WEBSITE_PATH","");
+        }
+
+
+
+
+
+
+    }
+
 
 
 ?>
