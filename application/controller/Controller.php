@@ -60,10 +60,10 @@
             }
               if($routes[1] == 'v1')
             {
-                    echo "<h1> api call </h1>";
+                echo "<h1> api call </h1>";
             }
         }
-        }
+    }
 
 
 
