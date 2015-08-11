@@ -5,7 +5,7 @@
     include_once("application/models/search.php");
     include_once("application/models/states.php");
     include_once("application/models/settings.php");
-        include_once("application/models/errors.php");
+    include_once("application/models/errors.php");
 
 // -- Class Name : Controller
 // -- Purpose : 
