@@ -85,7 +85,7 @@
             $sql_query = "SELECT count(id) as count FROM `users`";
             $result =$this->runSQL($sql_query);
             $count = mysqli_fetch_array($result);
-            return  $count[0];
+            return   $count[0];
         }
 
 

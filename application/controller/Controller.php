@@ -1,23 +1,30 @@
 <?php
+    
 
-        function __autoload($class_name) 
-        {
-           include_once("application/models/" . $class_name . ".php");
-        }
-
-// -- Class Name : Controller
+// -- Function Name : __autoload
+// -- Params : $class_name
 // -- Purpose : 
-// -- Created On : 
-    class Controller {
-        
-        var $user,$databae,$search,$pasturl;
+    function __autoload($class_name)         {
+        include_once("application/models/" . $class_name . ".php");
+    }
 
-
-    // -- Function Name : __construct
-    // -- Params : 
+    // -- Class Name : Controller
     // -- Purpose : 
-        public function __construct() {
-            session_start();        //Used for Development 
+    // -- Created On : 
+    
+    class Controller {
+        var $user,$databae,$search,$pasturl,$apiResponds;
+        // -- Function Name : __construct
+        // -- Params : 
+        // -- Purpose : 
+        public
+
+// -- Function Name : __construct
+// -- Params : 
+// -- Purpose : 
+        function __construct() {
+            session_start();
+            //Used for Development 
             $this->user = new user();
             $this->search = new search();
             $this->database = new database();
@@ -27,47 +34,60 @@
             $this->api = new api();
         }
 
+        // -- Function Name : actions
+        // -- Params : 
+        // -- Purpose : 
+        public
 
-    // -- Function Name : actions
-    // -- Params : 
-    // -- Purpose : 
-        public function actions($routes)
-        {
-            if($routes[0] == '')
-            {
-            echo "<h1>Homepage</h1>";
-            if($routes[1] == 'about')
-            {
-                echo "<h1>about</h1>";
-            }
-
-            if($routes[1] == 'settings')
-            {
-                echo "<h1>settings</h1>";
-            }
-            
-            if($routes[1] == 'search')
-            {
-                echo "<h1>search</h1>";
-            }
-            
-            if($routes[1] == 'login')
-            {
-                include_once(WEBSITE_PATH . 'application/views/signin.html');
-            }
-            if($routes[1] == 'signup')
-            {
-                   include_once(WEBSITE_PATH . 'application/views/signin.html');
-            }
-            if($routes[1] == 'v1')
-            {
-                echo "<h1> api call </h1>";
+// -- Function Name : actions
+// -- Params : $routes
+// -- Purpose : 
+        function actions($routes)        {
+            if ($routes[0] === ''){
+            switch ($routes[1]) {
+                case "about":
+                    echo "<h1>about</h1>";
+                    break;
+                case "settings":
+                    echo "<h1>settings</h1>";
+                    break;
+                case "search":
+                    echo "<h1>search</h1>";
+                    break;
+                case "login":
+                    echo "<h1>login</h1>";
+                    break;
+                case "signup":
+                    echo "<h1>signup</h1>";
+                    break;
+                case "v1":
+                    $this->apiCalls($routes[2]); // Calls the api switch Statements 
+                    break;
+                default:
+                    echo "<h1>Homepage</h1>";
             }
         }
     }
 
 
 
+// -- Function Name : apiCalls
+// -- Params : $apiCall
+// -- Purpose : 
+        public function apiCalls($apiCall) {
+          $this->apiResponds = null;
+            switch ($apiCall) {
+                case "getusers.json":
+                     $this->apiResponds =   $this->api->getUserStates();
+                    break;
+                case "getsearch.json":
+                    $this->apiResponds  = $this->api->getSearchStates();
+                    break;
+                default:
+                    echo "None";
+            }
+            echo  $this->apiResponds;
+        }
 
 
 
@@ -77,11 +97,18 @@
 
 
 
+
+
+
+
+        // -- Function Name : pastUrl
+        // -- Params : 
+        // -- Purpose : 
+        public
 
 // -- Function Name : pastUrl
 // -- Params : 
 // -- Purpose : 
-        public
         function pastUrl(){
             
             if(isset($_SERVER['HTTP_REFERER']))        {
@@ -94,122 +121,7 @@
 
 
 
-
-
-// -- Function Name : checkifAction
-// -- Params : 
-// -- Purpose : 
-        public
-        function checkifAction(){
-            $action ;
-            
-            if(isset( $_GET['action'])){
-                $action =   $_GET['action'];
-            } else
-            if(isset( $_GET['q'])){
-                $action =   $_GET['q'];
-            } else {
-                $action = 'home';
-            }
-
-            return $action;
-        }
-
-
-// -- Function Name : signinedIn
-// -- Params : $actions
-// -- Purpose : 
-        public
-        function signinedIn($actions){
-            switch ($actions) {
-                case "home":
-                    include_once( WEBSITE_PATH . 'application/views/results.html');
-                    break;
-                case "logout":
-                    $this->user->logout();
-                    $number_of_users =  $this->database->count_amount_of_users();
-                    $number_of_searches = $this->database->count_amount_of_searches();
-                    include_once(WEBSITE_PATH . 'application/views/signin.html');
-                    break;
-                case "settings":
-                    include_once(WEBSITE_PATH . 'application/views/setting.html');
-                    break;
-                case 'getSearch_Chart':
-                    $this->states->search_chart();
-                    break;
-                case 'charts':
-                    include_once(WEBSITE_PATH . 'application/views/charts.html');
-                    break;
-                case 'delete_account':
-                    $this->user->delete_account();
-                    $this->user->logout();
-                    break;
-                case 'update_account':
-                    $this->user->update_account();
-                    break;
-                case 'search':
-                    $this->search->add_search();
-                    include_once(WEBSITE_PATH . 'application/views/results.html');
-                    break;
-                case 'webresults':
-                    // $this->search->bing();
-                    $this->search->add_search();
-                    break;
-                default:
-                    $number_of_searches = $this->database->count_amount_of_searches();
-                    $number_of_users =  $this->database->count_amount_of_users();
-                    include_once(WEBSITE_PATH .'application/views/signin.html');
-                }
-
-        }
-
-
-// -- Function Name : NotSignedIn
-// -- Params : $actions
-// -- Purpose : 
-        public
-        function NotSignedIn($actions){
-            switch ($actions) {
-                case "signin":
-                    $this->user->sign_in();
-                    break;
-                case 'signup':
-                    include_once('application/views/signup.html');
-                    break;
-                case 'signinview':
-                    $number_of_searches = $this->database->count_amount_of_searches();
-                    $number_of_users =  $this->database->count_amount_of_users();
-                    include_once(WEBSITE_PATH . 'application/views/signin.html');
-                    break;
-                case 'search':
-                    include_once('application/views/results.html');
-                    break;
-                case 'register':
-                    echo  $this->user->register_account();
-                    break;
-                default:
-                    $number_of_searches = $this->database->count_amount_of_searches();
-                    $number_of_users =  $this->database->count_amount_of_users();
-                    include_once(WEBSITE_PATH . 'application/views/signin.html');
-                }
-
-        }
-
-
-// -- Function Name : invoke
-// -- Params : 
-// -- Purpose : 
-        public
-        function invoke(){
-            $actions = $this->checkifAction();
-            
-            if(isset( $_SESSION['ID'])){
-                $this->signinedIn($actions);
-            } else {
-                $this->NotSignedIn($actions);
-            }
-
-        }
+    
 
     }
 

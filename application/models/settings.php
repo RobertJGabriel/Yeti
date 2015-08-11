@@ -1,5 +1,7 @@
 <?php
 
+
+
     class settings{
 
 // -- Function Name : __construct
