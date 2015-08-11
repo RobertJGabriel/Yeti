@@ -57,7 +57,7 @@
             }
             if($routes[1] == 'signup')
             {
-                echo "<h1>signup</h1>";
+                   include_once(WEBSITE_PATH . 'application/views/signin.html');
             }
             if($routes[1] == 'v1')
             {
@@ -85,7 +85,7 @@
         function pastUrl(){
             
             if(isset($_SERVER['HTTP_REFERER']))        {
-                $this->pasturl =$_SERVER['HTTP_REFERER'];
+                $this->pasturl = $_SERVER['HTTP_REFERER'];
                 return $this->pasturl;
             }
 
