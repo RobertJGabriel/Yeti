@@ -9,15 +9,14 @@
 // -- Purpose : 
 // -- Created On : 
     class Controller {
+        
         var $user,$databae,$search,$pasturl;
 
 
-
-// -- Function Name : __construct
-// -- Params : 
-// -- Purpose : 
-        public
-        function __construct() {
+    // -- Function Name : __construct
+    // -- Params : 
+    // -- Purpose : 
+        public function __construct() {
             session_start();
             $this->user = new user();
             $this->search = new search();
@@ -26,6 +25,52 @@
             $this->states = new states();
             $this->errors = new errors();
         }
+
+
+    // -- Function Name : actions
+    // -- Params : 
+    // -- Purpose : 
+        public function actions($routes)
+        {
+            if($routes[0] == '')
+        {
+            echo "<h1>Homepage</h1>";
+            if($routes[1] == 'about')
+            {
+                echo "<h1>about</h1>";
+            }
+
+            if($routes[1] == 'settings')
+            {
+                echo "<h1>about</h1>";
+            }
+            
+            if($routes[1] == 'search')
+            {
+                echo "<h1>search</h1>";
+            }
+            
+            if($routes[1] == 'login')
+            {
+                include_once(WEBSITE_PATH . 'application/views/signin.html');
+            }
+            if($routes[1] == 'signup')
+            {
+                echo "<h1>signup</h1>";
+            }
+              if($routes[1] == 'v1')
+            {
+                    echo "<h1> api call </h1>";
+            }
+        }
+        }
+
+
+
+
+
+
+
 
 
 
