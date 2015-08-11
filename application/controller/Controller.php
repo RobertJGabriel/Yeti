@@ -17,13 +17,14 @@
     // -- Params : 
     // -- Purpose : 
         public function __construct() {
-            session_start();
+            session_start();        //Used for Development 
             $this->user = new user();
             $this->search = new search();
             $this->database = new database();
             $this->settings = new settings();
             $this->states = new states();
             $this->errors = new errors();
+            $this->api = new api();
         }
 
 
@@ -33,7 +34,7 @@
         public function actions($routes)
         {
             if($routes[0] == '')
-        {
+            {
             echo "<h1>Homepage</h1>";
             if($routes[1] == 'about')
             {
@@ -42,7 +43,7 @@
 
             if($routes[1] == 'settings')
             {
-                echo "<h1>about</h1>";
+                echo "<h1>settings</h1>";
             }
             
             if($routes[1] == 'search')
@@ -58,7 +59,7 @@
             {
                 echo "<h1>signup</h1>";
             }
-              if($routes[1] == 'v1')
+            if($routes[1] == 'v1')
             {
                 echo "<h1> api call </h1>";
             }
