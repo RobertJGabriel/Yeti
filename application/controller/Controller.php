@@ -55,16 +55,16 @@
                     echo "<h1>search</h1>";
                     break;
                 case "login":
-                    echo "<h1>login</h1>";
+                    $this->user->view('signin');
                     break;
                 case "signup":
-                    echo "<h1>signup</h1>";
+                    $this->user->view('signup');
                     break;
                 case "v1":
                     $this->apiCalls($routes[2]); // Calls the api switch Statements 
                     break;
                 default:
-                    echo "<h1>Homepage</h1>";
+                    $this->user->view('signin');
             }
         }
     }
@@ -88,41 +88,6 @@
             }
             echo  $this->apiResponds;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // -- Function Name : pastUrl
-        // -- Params : 
-        // -- Purpose : 
-        public
-
-// -- Function Name : pastUrl
-// -- Params : 
-// -- Purpose : 
-        function pastUrl(){
-            
-            if(isset($_SERVER['HTTP_REFERER']))        {
-                $this->pasturl = $_SERVER['HTTP_REFERER'];
-                return $this->pasturl;
-            }
-
-        }
-
-
-
-
-    
-
     }
 
     ?>

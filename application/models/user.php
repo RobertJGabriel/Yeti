@@ -156,6 +156,13 @@
 
 
 
+        public function view($view_name){
+
+            include_once("application/views/" . $view_name . ".html");
+        }
+
+
+
         public
 
 // -- Function Name : updateTwitter_Session

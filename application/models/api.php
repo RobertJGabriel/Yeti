@@ -27,7 +27,7 @@
         public  function getUserStates(){
             $sql = $this->database->count_amount_of_users();
             $results = array();
-            $results[] = array('numberofUsers' => $sql   );
+            $results[] = array("numberofUsers" => $sql   );
             return$json = json_encode($results);
         }
 
@@ -39,7 +39,7 @@
         public  function getSearchStates(){
             $sql = $this->database->count_amount_of_searches();
             $results = array();
-            $results[] = array('numberofSearches' => $sql);
+            $results[] = array("numberofSearches" => $sql);
             return$json = json_encode($results);
         }
 
