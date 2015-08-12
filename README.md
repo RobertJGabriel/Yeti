@@ -19,5 +19,12 @@ Yeti is an search engine framwork. It is designed to allow users to create a sea
 - Copy Project to htdocs
 - Run yeti.sql (Installer coming soon)
 - Open up Setting.php and add in your information
-- Added 128.0.0.2 www.search.yeti.com to the htdocs files.
-- All done, Just finsihed [here](http://www.search.yeti.com)
+- Added 128.0.0.2 search.yeti.com to the htdocs files.
+- All done, Just finsihed [here](http://search.yeti.com)
+
+
+###Api Calls
+Currently the apis are called used the following url structure
+```
+/v1/getamountofUsers
+```
