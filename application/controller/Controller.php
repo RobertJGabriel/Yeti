@@ -83,6 +83,12 @@
                 case "getsearch.json":
                     $this->apiResponds  = $this->api->getSearchStates();
                     break;
+                case "getStates.json":
+                    $this->apiResponds  = $this->api->getSystemStates();
+                    break;
+                case "signin":
+                    $this->user->sign_in();
+                    break;
                 default:
                     echo "None";
             }

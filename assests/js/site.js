@@ -1,21 +1,24 @@
-$.ajax(
-   {
-      type:'GET',
-      url:'/yeti/v1/getusers.json',
-
-      success: function(data){
-        addEvent(data,'amoutofUsers')
-      }
-   }
-);
 
 
-function addEvent(data,element)
+var apiCalls = {
+  amoutofUsers: "/yeti/v1/getStates.json"
+};
+
+for (var key in apiCalls)
 {
-alert(data.numberofUsers);
-	var json = JSON.parse(data);
-			
-	alert(json); //mkyong
-	var obj = JSON.parse(data);
-	document.getElementById(element).innerHTML = data["numberofUsers"];
+  $.ajax(
+  {
+    type: 'GET',
+    url: apiCalls[key],
+    }).done(function(data)
+    {
+      addEvent(data)
+  });
+}
+function addEvent(data)
+{
+  var json = JSON.parse(data);
+  document.getElementById('numberofSearches').innerHTML = json['numberofSearches'];
+    document.getElementById('amoutofUsers').innerHTML = json['amoutofUsers'];
+
 }

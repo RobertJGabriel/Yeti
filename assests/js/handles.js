@@ -5,7 +5,7 @@ $(function() {
   // This is for the personal Settings
   $("#signin").submit(function() {
 
-    var url = "index.php?action=signin"; // the script where you handle the form input.
+    var url = "/yeti/v1/signin"; // the script where you handle the form input.
     $.ajax({
       type: "POST",
       cache: false,
