@@ -54,17 +54,29 @@
                 case "search":
                     echo "<h1>search</h1>";
                     break;
+                case "pricing":
+                    $this->user->view('home');
+                    break;
+                case "download":
+                    $this->user->view('home');
+                    break;
+                case "contact":
+                    $this->user->view('home');
+                    break;
                 case "login":
                     $this->user->view('signin');
                     break;
                 case "signup":
                     $this->user->view('signup');
                     break;
+                case "features":
+                    $this->user->view('home');
+                    break;
                 case "v1":
                     $this->apiCalls($routes[2]); // Calls the api switch Statements 
                     break;
                 default:
-                    $this->user->view('signin');
+                    $this->user->view('home');
             }
         }
     }

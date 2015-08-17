@@ -160,8 +160,7 @@
 
             include_once("application/views/" . $view_name . ".html");
         }
-
-
+  
 
         public
 
