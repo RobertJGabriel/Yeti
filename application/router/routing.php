@@ -27,7 +27,7 @@
 
             }
 
-            $controller->actions($routes); // Calls and sends the url example http://localhost/yeti/login will be auto routes[1] = login
+            $controller->check($routes); // Calls and sends the url example http://localhost/yeti/login will be auto routes[1] = login
         }
 
         

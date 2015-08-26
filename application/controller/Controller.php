@@ -34,6 +34,20 @@
             $this->api = new api();
         }
 
+        
+        
+        
+  public function check($routes){
+       if(isset($_SESSION['ID'])){
+            $this->user->view('panel');
+       }else{
+            $this->actions($routes);
+       }
+  }
+        
+        
+        
+        
         // -- Function Name : actions
         // -- Params : 
         // -- Purpose : 
@@ -42,8 +56,10 @@
 // -- Function Name : actions
 // -- Params : $routes
 // -- Purpose : 
-        function actions($routes)        {
-            if ($routes[0] === ''){
+        function actions($routes){
+            
+           
+            if (($routes[0] === '')){
             switch ($routes[1]) {
                 case "about":
                     echo "<h1>about</h1>";
@@ -78,9 +94,9 @@
                 default:
                     $this->user->view('home');
             }
-        }
+  
     }
-
+        }
 
 
 // -- Function Name : apiCalls
