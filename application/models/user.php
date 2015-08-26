@@ -25,6 +25,8 @@
         function logout(){
             session_unset();
             session_destroy();
+            header("Location: http://localhost/yeti/");
+            die();
         }
 
 // -- Function Name : register_account

@@ -39,7 +39,7 @@
         
   public function check($routes){
        if(isset($_SESSION['ID'])){
-            $this->user->view('panel');
+            $this->Signed_Inactions($routes);
        }else{
             $this->actions($routes);
        }
@@ -52,10 +52,6 @@
         // -- Params : 
         // -- Purpose : 
         public
-
-// -- Function Name : actions
-// -- Params : $routes
-// -- Purpose : 
         function actions($routes){
             
            
@@ -94,10 +90,55 @@
                 default:
                     $this->user->view('home');
             }
-  
-    }
+            }
         }
 
+        
+        
+        
+        
+        
+             // -- Function Name : actions
+        // -- Params : 
+        // -- Purpose : 
+        public
+        function Signed_Inactions($routes){
+            
+           
+            if (($routes[0] === '')){
+            switch ($routes[1]) {
+                case "about":
+                    echo "<h1>about</h1>";
+                    break;
+                case "v1":
+                    $this->apiCalls($routes[2]); // Calls the api switch Statements 
+                    break;
+                default:
+                    $this->user->view('panel');
+            }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 // -- Function Name : apiCalls
 // -- Params : $apiCall
@@ -116,6 +157,9 @@
                     break;
                 case "signin":
                     $this->user->sign_in();
+                    break;
+                case "signout":
+                    $this->user->logout();
                     break;
                 default:
                     echo "None";

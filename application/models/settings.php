@@ -9,7 +9,7 @@
 // -- Purpose : 
         public
         function __construct() {
-			define("WEBSITE_PATH","");
+			define("WEBSITE_PATH","http://localhost/yeti/");
         }
 
 
