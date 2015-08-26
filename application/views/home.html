@@ -49,9 +49,9 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#feature">Features</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#download">Download</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a data-toggle="modal" href="#myModal">Login</a></li>
+                    <li><a data-toggle="modal" href="#signUp">Signup</a></li>
+                    <li><a data-toggle="modal" href="#login">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -256,13 +256,13 @@
     <footer>
         <div class="container">
             <div class="row">
-                <p>Copyright © 2084 Your Company Name | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+                <p>Copyright © 2015 Projectbird.com | Design: <a rel="nofollow" href="http://robertgabriel.ninja" target="_parent">Robert Gabriel </a></p>
             </div>
         </div>
     </footer>
 
     <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="login" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -305,6 +305,67 @@
 
         </div>
     </div>
+
+
+
+
+    <!-- Modal -->
+    <div id="signUp" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <form class="form-horizontal" id="signup" method="post" name='signin'>
+                                <div class="form-group">
+                                    <img class="img-responive center-block" src="assests/img/logo.png">
+                                </div>
+                                <div class="form-group" id="alert">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control floating-label" name="firstName" placeholder="First Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control floating-label" name="lastName" placeholder="Last Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control floating-label" name="email" placeholder="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control floating-label" name="website" placeholder="website">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input class="form-control" id="pwd" name="password" placeholder="Password" type="password">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning btn-block btn-lg">Sign Up</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
 
 
