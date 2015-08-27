@@ -19,6 +19,28 @@ $(function () {
 
 
 
+
+
+
+    // This is for the personal Settings
+    $("#signup").submit(function () {
+        var url = "/yeti/v1/signup"; // the script where you handle the form input.
+        alert('batman');
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: url,
+            data: $("#signup").serialize(), // serializes the form's elements.
+            success: function (data) {
+
+                alerts(data, 'Account created'); // show response from the php script.
+            }
+        });
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+
+
     // This is for the personal Settings
     $("#search_bar").submit(function () {
         var url = "index.php?action=webresults"; // the script where you handle the form input.
@@ -51,21 +73,6 @@ $(function () {
         return false; // avoid to execute the actual submit of the form.
     });
 
-
-    // This is for the personal Settings
-    $("#signup").submit(function () {
-        var url = "index.php?action=register"; // the script where you handle the form input.
-        $.ajax({
-            type: "POST",
-            cache: false,
-            url: url,
-            data: $("#signup").serialize(), // serializes the form's elements.
-            success: function (data) {
-                alerts(data, 'Account created'); // show response from the php script.
-            }
-        });
-        return false; // avoid to execute the actual submit of the form.
-    });
 
 
 

@@ -158,6 +158,10 @@
                 case "signin":
                     $this->user->sign_in();
                     break;
+                case "signup":
+                     echo "None";
+                    $this->user->register_account();
+                    break;
                 case "signout":
                     $this->user->logout();
                     break;

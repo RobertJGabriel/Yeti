@@ -49,9 +49,9 @@
 // -- Params : $username, $email, $password
 // -- Purpose : Register the user to the database
         public
-        function register_account($username,$email,$password){
-            $sql_query = "INSERT INTO `users`(`name`, `email`, `password`) VALUES (
-       '" . $username  ."','" . $email  ."','" . $password  ."')";
+        function register_account($firstName,$lastName,$website,$email,$password){
+            $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`) VALUES (
+       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."')";
             $this->runSQL($sql_query);
         }
 

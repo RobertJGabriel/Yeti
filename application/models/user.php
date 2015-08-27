@@ -34,7 +34,9 @@
 // -- Purpose :  Register the user and valdates the information, tos ee if there there or not.
         public
         function register_account(){
-            $username = $_POST['username'];
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
+            $website = $_POST['website'];
             $email = $_POST['email'];
             $password = $_POST['password'];
             $is_it_there =$this->database->check_if_account_exists($email);
@@ -43,7 +45,7 @@
                 return 'error';
             } else {
                 $before = $this->database->count_amount_of_users();
-                $this->database->register_account($username,$email,$password);
+                $this->database->register_account($firstName,$lastName,$website,$email,$password);
                 $after = $this->database->count_amount_of_users();
                 
                 if(($before + 1) == $after){
