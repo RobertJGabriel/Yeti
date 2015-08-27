@@ -25,14 +25,13 @@ $(function () {
     // This is for the personal Settings
     $("#signup").submit(function () {
         var url = "/yeti/v1/signup"; // the script where you handle the form input.
-        alert('batman');
         $.ajax({
             type: "POST",
             cache: false,
             url: url,
             data: $("#signup").serialize(), // serializes the form's elements.
             success: function (data) {
-
+                console.log(data);
                 alerts(data, 'Account created'); // show response from the php script.
             }
         });
@@ -122,7 +121,7 @@ $(function () {
             button.setAttribute("data-dismiss", "alert");
             button.innerHTML = "x";
             div.appendChild(button);
-            document.getElementById("alert").appendChild(div);
+            document.getElementById("alerts").appendChild(div);
             setTimeout(redirect, 2000);
 
 

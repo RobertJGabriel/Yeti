@@ -42,16 +42,16 @@
             $is_it_there =$this->database->check_if_account_exists($email);
             
             if ($is_it_there != '0' ){
-                return 'error';
+                echo 'error';
             } else {
                 $before = $this->database->count_amount_of_users();
                 $this->database->register_account($firstName,$lastName,$website,$email,$password);
                 $after = $this->database->count_amount_of_users();
                 
                 if(($before + 1) == $after){
-                    return 'true';
+                    echo 'true';
                 } else {
-                    return 'error';
+                    echo 'error';
                 }
 
             }
