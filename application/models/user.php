@@ -70,7 +70,9 @@
             if($count===1){
                 while($row = $results->fetch_assoc()){
                     $_SESSION["ID"] =  $row['id'];
-                    $_SESSION["NAME"] =  $row['name'];
+                    $_SESSION["first_Name"] =  $row['firstName'];
+                     $_SESSION["last_Name"] =  $row['lastName'];
+                     $_SESSION["website"] =  $row['website'];
                     $_SESSION["email"] =  $row['email'];
                     $_SESSION["twitter"] =  $row['twitter'];
                     $_SESSION["password"] =  $row['password'];
