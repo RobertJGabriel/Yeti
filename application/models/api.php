@@ -43,6 +43,18 @@
             return $json = json_encode($results);
         }
 
+        
+        public function getPopluarSearches(){
+        
+        
+        $sql = $this->database->getPopluarSearches();
+         
+            $rows = array();
+while($r = mysqli_fetch_assoc($sql)) {
+    $rows[] = $r;
+}
+return json_encode($rows);
+        }
 
         public function getSystemStates(){
             $sql2 = $this->database->count_amount_of_users();

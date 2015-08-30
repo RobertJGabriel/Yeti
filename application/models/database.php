@@ -40,7 +40,7 @@
 // -- Purpose : To get if the user is in the database, if it does it signs me in.
         public
         function sign_in($email,$password){
-            $sql_query = "SELECT `id`,`firstName`,`lastName`,`website`,`email`,`password`, `twitter` FROM `users` WHERE email ='" . $email . "' AND password ='" . $password ."'";
+            $sql_query = "SELECT `id`,`firstName`,`lastName`,`website`,`email`,`password`, `twitter`,`companyId` FROM `users` WHERE email ='" . $email . "' AND password ='" . $password ."'";
             return $this->runSQL($sql_query);
         }
 
@@ -55,6 +55,12 @@
             $this->runSQL($sql_query);
         }
 
+        public 
+            function getPopluarSearches(){
+         $sql_query = "SELECT `search_term`,`userID`,`date`,`time`,`location` FROM `searches`  WHERE `companyId` = '" . $_SESSION["companyId"] .  "' GROUP BY search_term";
+           return $this->runSQL($sql_query);
+        
+        }
 
 
 // -- Function Name : delete_account

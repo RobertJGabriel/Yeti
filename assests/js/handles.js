@@ -18,7 +18,25 @@ $(function () {
     });
 
 
+    $.ajax({
+        url: '/yeti/v1/getPopluarSearches.json',
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            jQuery.each(data, function (i, val) {
+                appendSearchResult(val);
+            });
+        }
+    });
 
+
+    function appendSearchResult(val) {
+        var ul = document.getElementById("popluarSearches");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(val['search_term']));
+        ul.appendChild(li);
+    }
 
 
 
