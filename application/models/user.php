@@ -47,7 +47,7 @@
                 $before = $this->database->count_amount_of_users();
                 $this->database->register_account($firstName,$lastName,$website,$email,$password);
                 $after = $this->database->count_amount_of_users();
-                
+                $this->createFolder($website);
                 if(($before + 1) == $after){
                     echo 'true';
                 } else {
@@ -149,16 +149,11 @@
 
 
         public
-        function createFolder(){
+        function createFolder($companyName){
 
-            $checkIfExists =  $this->database->checkIfExists();
-            $getCompanyName =  $this->database->createCompanyName();
-
-           if ($checkIfExists != '1' ){
-                mkdir("installations/" . companyName, 0700); //Creates Folders
-           }else {
-             echo 'Pick another name please ';
-            }
+          
+                mkdir('installations/' . $companyName, 0700); //Creates Folders
+           
         }
 
 
