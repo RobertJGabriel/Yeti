@@ -1,0 +1,32 @@
+{
+    "name": "Yeti",
+    "version": "1.0.0",
+    "description": "Yeti is an search engine framwork. It is designed to allow users to create a search engine for the there site in a amatter of seconds. Allowing results from different source. All by adding a line of code.",
+    "main": "gulp.js",
+    "dependencies": {
+        "gulp": "^3.9.0",
+        "gulp-jshint": "*",
+        "gulp-less": "*",
+        "gulp-minify-css": "*",
+        "gulp-uglify": "^1.4.0",
+        "gulp-util": "*",
+        "say.js": "git://github.com/4ver/say.js.git#master"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RobertJGabriel/Yeti.git"
+    },
+    "keywords": [
+    "yeti"
+  ],
+    "author": "Robert Gabriel",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/RobertJGabriel/Yeti/issues"
+    },
+    "homepage": "https://github.com/RobertJGabriel/Yeti#readme"
+}

@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/*
+
+Animate.less
+Cross-browser LESS animation library for Bootstrap
+Licensed under the ☺ license (http://licence.visualidiot.com/)
+Documenation: https://github.com/machito/animate.less
+-------------------------------------------------------
+Copyright © 2012 Michael Castilla
+Email: yo@machito.co
+Twitter: https://twitter.com/micr0bitz
+
+*/
+
+@animationDurationTime: 1s;
+@animationDelayTime: 0s;
+@animationFillMode: both;
+@animationLessLocation: 'animate';
+// required for all
+@import "less/@{animationLessLocation}/animated.less";
+@import "less/@{animationLessLocation}/bounce.less";
+@import "less/@{animationLessLocation}/bounceIn.less";
+@import "less/@{animationLessLocation}/bounceInDown.less";
+@import "less/@{animationLessLocation}/bounceInLeft.less";
+@import "less/@{animationLessLocation}/bounceInRight.less";
+@import "less/@{animationLessLocation}/bounceInUp.less";
+@import "less/@{animationLessLocation}/bounceOut.less";
+@import "less/@{animationLessLocation}/bounceOutDown.less";
+@import "less/@{animationLessLocation}/bounceOutLeft.less";
+@import "less/@{animationLessLocation}/bounceOutRight.less";
+@import "less/@{animationLessLocation}/bounceOutUp.less";
+@import "less/@{animationLessLocation}/fadeIn.less";
+@import "less/@{animationLessLocation}/fadeInDown.less";
+@import "less/@{animationLessLocation}/fadeInDownBig.less";
+@import "less/@{animationLessLocation}/fadeInLeft.less";
+@import "less/@{animationLessLocation}/fadeInLeftBig.less";
+@import "less/@{animationLessLocation}/fadeInRight.less";
+@import "less/@{animationLessLocation}/fadeInRightBig.less";
+@import "less/@{animationLessLocation}/fadeInUp.less";
+@import "less/@{animationLessLocation}/fadeInUpBig.less";
+@import "less/@{animationLessLocation}/fadeOut.less";
+@import "less/@{animationLessLocation}/fadeOutDown.less";
+@import "less/@{animationLessLocation}/fadeOutDownBig.less";
+@import "less/@{animationLessLocation}/fadeOutLeft.less";
+@import "less/@{animationLessLocation}/fadeOutLeftBig.less";
+@import "less/@{animationLessLocation}/fadeOutRight.less";
+@import "less/@{animationLessLocation}/fadeOutRightBig.less";
+@import "less/@{animationLessLocation}/fadeOutUp.less";
+@import "less/@{animationLessLocation}/fadeOutUpBig.less";
+@import "less/@{animationLessLocation}/flash.less";
+@import "less/@{animationLessLocation}/flip.less";
+@import "less/@{animationLessLocation}/flipInX.less";
+@import "less/@{animationLessLocation}/flipInY.less";
+@import "less/@{animationLessLocation}/flipOutX.less";
+@import "less/@{animationLessLocation}/flipOutY.less";
+@import "less/@{animationLessLocation}/hinge.less";
+@import "less/@{animationLessLocation}/lightSpeedIn.less";
+@import "less/@{animationLessLocation}/lightSpeedOut.less";
+@import "less/@{animationLessLocation}/pulse.less";
+@import "less/@{animationLessLocation}/rollIn.less";
+@import "less/@{animationLessLocation}/rollOut.less";
+@import "less/@{animationLessLocation}/rotateIn.less";
+@import "less/@{animationLessLocation}/rotateInDownLeft.less";
+@import "less/@{animationLessLocation}/rotateInDownRight.less";
+@import "less/@{animationLessLocation}/rotateInUpLeft.less";
+@import "less/@{animationLessLocation}/rotateInUpRight.less";
+@import "less/@{animationLessLocation}/rotateOut.less";
+@import "less/@{animationLessLocation}/rotateOutDownLeft.less";
+@import "less/@{animationLessLocation}/rotateOutDownRight.less";
+@import "less/@{animationLessLocation}/rotateOutUpLeft.less";
+@import "less/@{animationLessLocation}/rotateOutUpRight.less";
+@import "less/@{animationLessLocation}/shake.less";
+@import "less/@{animationLessLocation}/swing.less";
+@import "less/@{animationLessLocation}/tada.less";
+@import "less/@{animationLessLocation}/wiggle.less";
+@import "less/@{animationLessLocation}/wobble.less";
+
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Core variables and mixins
+@import "less/bootstrap/variables.less";
+@import "less/bootstrap/mixins.less";
+// Reset and dependencies
+@import "less/bootstrap/normalize.less";
+@import "less/bootstrap/print.less";
+@import "less/bootstrap/glyphicons.less";
+// Core CSS
+@import "less/bootstrap/scaffolding.less";
+@import "less/bootstrap/type.less";
+@import "less/bootstrap/code.less";
+@import "less/bootstrap/grid.less";
+@import "less/bootstrap/tables.less";
+@import "less/bootstrap/forms.less";
+@import "less/bootstrap/buttons.less";
+// Components
+@import "less/bootstrap/component-animations.less";
+@import "less/bootstrap/dropdowns.less";
+@import "less/bootstrap/button-groups.less";
+@import "less/bootstrap/input-groups.less";
+@import "less/bootstrap/navs.less";
+@import "less/bootstrap/navbar.less";
+@import "less/bootstrap/breadcrumbs.less";
+@import "less/bootstrap/pagination.less";
+@import "less/bootstrap/pager.less";
+@import "less/bootstrap/labels.less";
+@import "less/bootstrap/badges.less";
+@import "less/bootstrap/jumbotron.less";
+@import "less/bootstrap/thumbnails.less";
+@import "less/bootstrap/alerts.less";
+@import "less/bootstrap/progress-bars.less";
+@import "less/bootstrap/media.less";
+@import "less/bootstrap/list-group.less";
+@import "less/bootstrap/panels.less";
+@import "less/bootstrap/responsive-embed.less";
+@import "less/bootstrap/wells.less";
+@import "less/bootstrap/close.less";
+// Components w/ JavaScript
+@import "less/bootstrap/modals.less";
+@import "less/bootstrap/tooltip.less";
+@import "less/bootstrap/popovers.less";
+@import "less/bootstrap/carousel.less";
+// Utility classes
+@import "less/bootstrap/utilities.less";
+@import "less/bootstrap/responsive-utilities.less";
+@import "less/fontawesome/animated.less";
+// Components w/ JavaScript
+@import "less/fontawesome/bordered-pulled.less";
+@import "less/fontawesome/core.less";
+@import "less/fontawesome/fixed-width.less";
+@import "less/fontawesome/font-awesome.less";
+// Utility classes
+@import "less/fontawesome/icons.less";
+@import "less/fontawesome/larger.less";
+@import "less/fontawesome/list.less";
+@import "less/fontawesome/mixins.less";
+@import "less/fontawesome/path.less";
+@import "less/fontawesome/rotated-flipped.less";
+@import "less/fontawesome/stacked.less";
+@import "less/fontawesome/variables.less";
+@import "less/extra/tempo.less";
