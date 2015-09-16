@@ -26,9 +26,9 @@ gulp.task('less', function () {
 
 
 gulp.task('compressJs', function () {
-    return gulp.src('/assests/js/site.js')
+    return gulp.src('assests/js/site.js')
         .pipe(uglify())
-        .pipe(gulp.dest('/assests/public/'));
+        .pipe(gulp.dest('assests/js/'));
 });
 
 gulp.task('build', ['less', 'compressJs']);
