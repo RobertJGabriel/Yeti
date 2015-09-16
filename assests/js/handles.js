@@ -126,8 +126,10 @@ $(function () {
 
 
     function alerts(status, message) {
+  
         $("#alert >div").remove();
-        if (status == 'true') {
+        if (status === 'true') {
+                  console.log(status + message);
             var div = document.createElement("div");
             div.setAttribute("class", "alert alert-dismissable alert-success");
             div.setAttribute("role", "alert");
@@ -149,7 +151,7 @@ $(function () {
             div.setAttribute("role", "alert");
             div.setAttribute("id", "alert");
             div.innerHTML = "Oh snap something is wrong ";
-            document.getElementById("alert").appendChild(div);
+            document.getElementById("alerts").appendChild(div);
 
         } else if (status == 'passwordchanged') {
             var div = document.createElement("div");
@@ -163,7 +165,7 @@ $(function () {
             button.setAttribute("data-dismiss", "alert");
             button.innerHTML = "x";
             div.appendChild(button);
-            document.getElementById("alert").appendChild(div);
+            document.getElementById("alerts").appendChild(div);
         }
     }
 

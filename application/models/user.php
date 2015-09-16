@@ -76,7 +76,7 @@
                     $_SESSION["email"] =  $row['email'];
                     $_SESSION["twitter"] =  $row['twitter'];
                     $_SESSION["password"] =  $row['password'];
-                    $_SESSION["companyId"] =  $row['companyId'];
+                //    $_SESSION["companyId"] =  $row['companyId'];
                 }
 
             }
