@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify');
 
 
 gulp.task('less', function () {
-    gulp.src('/assests/css/styles.less')
+    gulp.src('assests/css/styles.less')
         .pipe(less()
             .on('error', gutil.log)
             .on('error', gutil.beep)
@@ -21,7 +21,7 @@ gulp.task('less', function () {
         .pipe(minifyCSS({
             keepSpecialComments: 1
         }))
-        .pipe(gulp.dest('/assests/public/css/'));
+        .pipe(gulp.dest('assests/css/'));
 });
 
 
