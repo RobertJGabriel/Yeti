@@ -16,7 +16,7 @@ Yeti is an search engine framwork. It is designed to allow users to create a sea
 
 
 ###Set Up
-- Copy Project to htdocs
+- Clone this project to your htdocs folder ``` git clone    ```
 - Run yeti.sql (Installer coming soon)
 - Open up Setting.php and add in your information
 - Added 128.0.0.2 search.yeti.com to the htdocs files.
