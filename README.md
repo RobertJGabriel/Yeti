@@ -31,11 +31,38 @@ Yeti is an search engine framwork. It is designed to allow users to create a sea
 - ``` gulp compressJs  ``` : Builds the javascript file.
 
 ##Api Calls
-Currently the apis are called used the following url structure
+Currently the apis are called used the following url structure. With a base url of 
+###Base Url 
 ```
-/v1/getamountofUsers
+http://localhost/yeti/
+```
+###Calls 
+Then add the following 
+
+```
+/v1/getsearch.json
 ```
 
+```
+/v1/getusers.json
+```
+
+```
+/v1/getStates.json
+```
+
+```
+/v1/getPopluarSearches.json
+```
+```
+/v1/signin
+```
+```
+/v1/signup
+```
+```
+/v1/signout
+```
 
 ##Problems 
 ###Windows
