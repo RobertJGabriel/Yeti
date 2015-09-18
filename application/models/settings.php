@@ -1,7 +1,5 @@
 <?php
 
-
-
     class settings{
 
 // -- Function Name : __construct
@@ -12,13 +10,5 @@
 			define("WEBSITE_PATH","http://localhost/yeti/");
         }
 
-
-
-
-
-
     }
-
-
-
 ?>

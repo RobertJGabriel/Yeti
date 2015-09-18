@@ -1,26 +1,18 @@
 <?php
-
-
     include_once("database.php");
     
+
 // -- Class Name : user
 // -- Purpose : 
-// -- Created On : The user account that has features like log in , create user , sessions cotnrols etc.
+// -- Created On : 
     class user{
         var $database;
+        
         public
-
-// -- Function Name : __construct
-// -- Params : 
-// -- Purpose :  Start the database
         function __construct()   {
             $this->database =  new database();
         }
 
-
-// -- Function Name : logout
-// -- Params : 
-// -- Purpose : Destory the user  and log the user out. 
         public
         function logout(){
             session_unset();
@@ -29,9 +21,6 @@
             die();
         }
 
-// -- Function Name : register_account
-// -- Params : 
-// -- Purpose :  Register the user and valdates the information, tos ee if there there or not.
         public
         function register_account(){
             $firstName = $_POST['firstName'];
@@ -48,6 +37,7 @@
                 $this->database->register_account($firstName,$lastName,$website,$email,$password);
                 $after = $this->database->count_amount_of_users();
                 $this->createFolder($website);
+                
                 if(($before + 1) == $after){
                     echo 'true';
                 } else {
@@ -58,10 +48,6 @@
 
         }
 
-
-// -- Function Name : create_sessions
-// -- Params : $results
-// -- Purpose : Crates the session varables if the login is correct
         public
         function create_sessions($results){
             // session_start();
@@ -71,33 +57,23 @@
                 while($row = $results->fetch_assoc()){
                     $_SESSION["ID"] =  $row['id'];
                     $_SESSION["first_Name"] =  $row['firstName'];
-                     $_SESSION["last_Name"] =  $row['lastName'];
-                     $_SESSION["website"] =  $row['website'];
+                    $_SESSION["last_Name"] =  $row['lastName'];
+                    $_SESSION["website"] =  $row['website'];
                     $_SESSION["email"] =  $row['email'];
                     $_SESSION["twitter"] =  $row['twitter'];
                     $_SESSION["password"] =  $row['password'];
-                //    $_SESSION["companyId"] =  $row['companyId'];
+                    //    $_SESSION["companyId"] =  $row['companyId'];
                 }
 
             }
 
         }
 
-
-
-// -- Function Name : get_amount_of_users
-// -- Params : 
-// -- Purpose : Gets the amount of users in the database ( for the home page)
         public
         function get_amount_of_users(){
             return  $this->database->count_amount_of_users();
         }
 
-
-
-// -- Function Name : sign_in
-// -- Params : 
-// -- Purpose : Sign in function to see if there their or not.
         public
         function sign_in(){
             $email = $_POST['email'];
@@ -115,22 +91,13 @@
 
         }
 
-
-
-// -- Function Name : delete_account
-// -- Params : 
-// -- Purpose : Delete the account if the user requests it.
-        public 
+        public
         function delete_account(){
             $email = $_SESSION["email"];
             $username = $_SESSION["NAME"];
             $this->database->delete_account($username,$email);
         }
 
-
-// -- Function Name : update_account
-// -- Params : 
-// -- Purpose :  Update the user account wwith password etc etc.
         public
         function update_account(){
             $password = $_POST["password"];
@@ -147,28 +114,18 @@
 
         }
 
-
         public
         function createFolder($companyName){
-
-          
-                mkdir('installations/' . $companyName, 0700); //Creates Folders
-           
+            mkdir('installations/' . $companyName, 0700);
+            //Creates Folders
         }
-
-
-
-        public function view($view_name){
-
-            include_once("application/views/" . $view_name . ".html");
-        }
-  
 
         public
+        function view($view_name){
+            include_once("application/views/" . $view_name . ".html");
+        }
 
-// -- Function Name : updateTwitter_Session
-// -- Params : $twitter
-// -- Purpose :  If they change there twitter settings it updates the session varables, i e allow them to post results to twitter.
+        public
         function updateTwitter_Session($twitter){
             $_SESSION["twitter"] =  $twitter;
         }

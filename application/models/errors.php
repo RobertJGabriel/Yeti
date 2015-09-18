@@ -1,35 +1,28 @@
 <?php
+    
 
-
- class errors {
-     
-
-
+// -- Class Name : errors
+// -- Purpose : 
+// -- Created On : 
+    class errors {
+        
         public
         function __construct() {
-          $this->errorHandling();
-          $this->showErrors();
+            $this->errorHandling();
+            $this->showErrors();
         }
-
 
         public
         function errorHandling(){
-        	ini_set("html_errors", 1); 
-			ini_set("error_prepend_string", "<pre style='color: #333; font-face:monospace; font-size:8pt;'>"); 
-			ini_set("error_append_string ", "</pre>"); 
+            ini_set("html_errors", 1);
+            ini_set("error_prepend_string", "<pre style='color: #333; font-face:monospace; font-size:8pt;'>");
+            ini_set("error_append_string ", "</pre>");
         }
-
 
         public
         function formatting(){
-
-
-
         }
 
-        // -- Function Name : showErrors
-		// -- Params : 
-		// -- Purpose : 
         public
         function showErrors(){
             ini_set('display_errors',1);
@@ -37,9 +30,6 @@
             error_reporting(-1);
         }
 
+    }
 
- }
-
-
-
-?>
+    ?>
