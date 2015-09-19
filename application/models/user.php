@@ -23,15 +23,13 @@
 
         public
         function register_account(){
-            $firstName = $_POST['firstName'];
-            $lastName = $_POST['lastName'];
-            $website = $_POST['website'];
-            $email = $_POST['email'];
+            $firstName = mysqli_real_escape_string ($_POST['firstName']);
+            $lastName =  mysqli_real_escape_string($_POST['lastName']);
+            $website =   mysqli_real_escape_string($_POST['website']);
+            $email =     mysqli_real_escape_string($_POST['email']);
+            $password =  mysqli_real_escape_string($_POST['password']);
             // Salted Hash
-            $password = $_POST['password'];
-            $salt = "nowelosdfjh1234";
-            $password = $password.$salt;
-            $password = sha1($password);
+            $final_password = $this->encrypt_password($password);
 
             $is_it_there =$this->database->check_if_account_exists($email);
             
@@ -39,7 +37,7 @@
                 echo 'error';
             } else {
                 $before = $this->database->count_amount_of_users();
-                $this->database->register_account($firstName,$lastName,$website,$email,$password);
+                $this->database->register_account($firstName,$lastName,$website,$email,$final_password);
                 $after = $this->database->count_amount_of_users();
                 $this->createFolder($website);
                 
@@ -51,6 +49,15 @@
 
             }
 
+        }
+
+        public
+        function encrypt_password($password){
+            $salt = "nowelosdfjh1234";
+            $password = $password.$salt;
+            $password = sha1($password);
+
+            return $password;
         }
 
         public
@@ -81,8 +88,8 @@
 
         public
         function sign_in(){
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $email = mysqli_real_escape_string($_POST['email']);
+            $password = mysqli_real_escape_string($_POST['password']);
             $results =   $this->database->sign_in($email,$password);
             $count = mysqli_num_rows($results);
             
@@ -105,8 +112,8 @@
 
         public
         function update_account(){
-            $password = $_POST["password"];
-            $twitter =  $_POST["shareT"];
+            $password = mysqli_real_escape_string($_POST["password"]);
+            $twitter =  mysqli_real_escape_string($_POST["shareT"]);
             $this->database->update_account($password,$twitter);
             $wasItChanged =  $this->database->check_if_password_changed($password);
             $this->updateTwitter_Session($_POST["shareT"]);
@@ -134,6 +141,8 @@
         function updateTwitter_Session($twitter){
             $_SESSION["twitter"] =  $twitter;
         }
+
+        
 
     }
 
