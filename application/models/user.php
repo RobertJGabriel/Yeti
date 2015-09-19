@@ -85,8 +85,8 @@
 
         public
         function sign_in(){
-            $email = filter_var($_POST['email']);
-            $password = filter_var($_POST['password']);
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
             $results =   $this->database->sign_in($email,$password);
             $count = mysqli_num_rows($results);
             

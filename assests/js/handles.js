@@ -49,6 +49,7 @@ $(function () {
             url: url,
             data: $(this).serialize(), // serializes the form's elements.
             success: function (data) {
+                console.log(data);
                 if(url === "/yeti/v1/deleteaccount"){
                     redirect(); //Logs them out.
                 }else{
