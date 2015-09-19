@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.4.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 27, 2015 at 02:18 AM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Host: localhost
+-- Generation Time: Sep 19, 2015 at 12:47 PM
+-- Server version: 5.6.26
+-- PHP Version: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -89,6 +89,20 @@ INSERT INTO `searches` (`id`, `search_term`, `userID`, `date`, `time`, `location
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE IF NOT EXISTS `settings` (
+  `twitter` tinyint(1) NOT NULL DEFAULT '0',
+  `gogoduck` tinyint(1) NOT NULL DEFAULT '0',
+  `google` tinyint(1) NOT NULL DEFAULT '0',
+  `bing` tinyint(1) NOT NULL DEFAULT '0',
+  `companyId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -100,19 +114,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) NOT NULL,
   `website` varchar(200) NOT NULL,
   `twitter` varchar(11) NOT NULL,
-  `hash`    char(32)  NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+  `hash` char(32) NOT NULL,
+  `companyId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `website`, `twitter`) VALUES
-(12, '', '', 'robert_gabriel@outlook.com', 'ign', '', ''),
-(13, 'g', 'f', 'rgh', 'werftghj', 'erfghj', '3'),
-(14, 'Rob', 'Gabriel', 'gtirob@gmail.com', 's', 'test.ie', ''),
-(15, 'robert', 'gabriel', 's@GMAIL.COM', 'ZZZZ', 'SSS', ''),
-(16, 'rffg', 'edfgh', 'dfghj@j.com', 'q', 'fghj', '');
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `website`, `twitter`, `hash`, `companyId`) VALUES
+(12, '', '', 'robert_gabriel@outlook.com', 'ign', '', '', '', 0),
+(13, 'g', 'f', 'rgh', 'werftghj', 'erfghj', '3', '', 0),
+(14, 'Rob', 'Gabriel', 'gtirob@gmail.com', 's', 'test.ie', '', '', 0),
+(15, 'robert', 'gabriel', 's@GMAIL.COM', 'ZZZZ', 'SSS', '', '', 0),
+(16, 'rffg', 'edfgh', 'dfghj@j.com', 'q', 'fghj', '', '', 0),
+(17, '', '', '', '04b80367f481fafc835322dc7422a6d7dfda20e0', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -143,7 +159,7 @@ ALTER TABLE `searches`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
