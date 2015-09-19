@@ -23,14 +23,13 @@
 
         public
         function register_account(){
-            $firstName = mysqli_real_escape_string ($_POST['firstName']);
-            $lastName =  mysqli_real_escape_string($_POST['lastName']);
-            $website =   mysqli_real_escape_string($_POST['website']);
-            $email =     mysqli_real_escape_string($_POST['email']);
-            $password =  mysqli_real_escape_string($_POST['password']);
-            // Salted Hash
-            $final_password = $this->encrypt_password($password);
-
+            $firstName  =   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+            $lastName   =   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+            $website    =   filter_var($_POST['website'], FILTER_SANITIZE_STRING);
+            $email      =   filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $password   =   filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+            
+            $final_password = $this->encrypt_password($password); // Salted Hash
             $is_it_there =$this->database->check_if_account_exists($email);
             
             if ($is_it_there != '0' ){
@@ -54,9 +53,7 @@
         public
         function encrypt_password($password){
             $salt = "nowelosdfjh1234";
-            $password = $password.$salt;
-            $password = sha1($password);
-
+            $password = sha1($password.$salt);
             return $password;
         }
 
@@ -88,8 +85,8 @@
 
         public
         function sign_in(){
-            $email = mysqli_real_escape_string($_POST['email']);
-            $password = mysqli_real_escape_string($_POST['password']);
+            $email = filter_var($_POST['email']);
+            $password = filter_var($_POST['password']);
             $results =   $this->database->sign_in($email,$password);
             $count = mysqli_num_rows($results);
             
@@ -112,8 +109,8 @@
 
         public
         function update_account(){
-            $password = mysqli_real_escape_string($_POST["password"]);
-            $twitter =  mysqli_real_escape_string($_POST["shareT"]);
+            $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
+            $twitter =  filter_var($_POST["shareT"], FILTER_SANITIZE_STRING);
             $this->database->update_account($password,$twitter);
             $wasItChanged =  $this->database->check_if_password_changed($password);
             $this->updateTwitter_Session($_POST["shareT"]);
