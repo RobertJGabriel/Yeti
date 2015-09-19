@@ -43,6 +43,8 @@ $(function () {
     // This is for the personal Settings
     $("#signup").submit(function () {
         var url = "/yeti/v1/signup"; // the script where you handle the form input.
+        var signupLocation = document.querySelectorAll('#signUp > input[name="displayAlertLocation"]').innerHTML;
+       console.log(signupLocation);
         $.ajax({
             type: "POST",
             cache: false,
