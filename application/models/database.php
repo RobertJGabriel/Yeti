@@ -7,7 +7,7 @@
 
         var $username = "root";
         var $password= "";
-        var $host = "localhost";
+        var $host = "localhost:3307";
         var $database = "yeti";
         var $con;
         
