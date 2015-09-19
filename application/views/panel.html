@@ -13,19 +13,9 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
   <link href="assests/css/styles.css" rel="stylesheet">
-    <!-- animate css -->
-    <link rel="stylesheet" href="assests/css/animate.min.css">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="assests/css/bootstrap.min.css">
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="assests/css/font-awesome.min.css">
+    
     <!-- google font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- custom css -->
-    <link rel="stylesheet" href="assests/css/templatemo-style.css">
-    <link rel="stylesheet" href="assests/css/panels.css">
-
 </head>
 
 <body>
@@ -43,7 +33,7 @@
                 <ul class="nav nav-tabs" style="margin-bottom: 15px;">
                     <li class="active"><a href="#homes" data-toggle="tab">Home</a></li>
                     <li><a href="#profile" data-toggle="tab">Profile</a></li>
-                    <li><a>Search</a></li>
+                    <li><a href="#search" data-toggle="tab">Search</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#">
             Settings <span class="caret"></span>
@@ -63,6 +53,37 @@
                             <h1>Popluar Searches</h1>
                         </ol>
                     </div>
+                    
+                    <div class="tab-pane fade" id="search">
+
+                          <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <form class="form-horizontal" id="search_settings" method="post" name='search_settings'>
+                                <div class="form-group">
+                                    <img class="img-responive center-block" src="assests/img/logo.png">
+                                </div>
+                                <div class="form-group" id="signup_alert">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="togglebutton">
+                    <label>
+                        <input type="checkbox" checked=""> Toggle button
+                    </label>
+                </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning btn-block btn-lg">Sign Up</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+
+                    </div>
+
                     <div class="tab-pane fade" id="profile">
 
                         <div class="row">
@@ -218,6 +239,13 @@
 
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="assests/js/highchats.js"></script>
+    <script src="assests/js/ripples.min.js"></script>
+        <script src="assests/js/material.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
 </body>
 
 </html>
