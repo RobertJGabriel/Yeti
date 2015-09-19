@@ -5,24 +5,24 @@ $(function () {
 
 
     $("#signin").submit(function () {
-       ajaxPostRequest("/yeti/v1/signin","");
+       ajaxPostRequest($(this), "/yeti/v1/signin","");
         return false; // avoid to execute the actual submit of the form.
     });
 
     $("#signup").submit(function () {
-        ajaxPostRequest("/yeti/v1/signup","");
+        ajaxPostRequest($(this), "/yeti/v1/signup","");
         return false; // avoid to execute the actual submit of the form.
     });
 
       // This is for the personal Settings
     $("#delete_account").submit(function () {
-        ajaxPostRequest("/yeti/v1/deleteaccount",""); // the script where you handle the form input.
+        ajaxPostRequest($(this), "/yeti/v1/deleteaccount",""); // the script where you handle the form input.
         return false; // avoid to execute the actual submit of the form.
     });
 
     // This is for the personal Settings
     $("#update_account").submit(function () {
-        ajaxPostRequest("/yeti/v1/updateaccount","");
+        ajaxPostRequest($(this), "/yeti/v1/updateaccount","");
         return false; // avoid to execute the actual submit of the form.
     });
 
@@ -41,13 +41,13 @@ $(function () {
 
 
 
-    function ajaxPostRequest(url,message){
+    function ajaxPostRequest(thisObj,url,message){
 
           $.ajax({
             type: "POST",
             cache: false,
             url: url,
-            data: $(this).serialize(), // serializes the form's elements.
+            data: thisObj.serialize(), // serializes the form's elements.
             success: function (data) {
                 console.log(data);
                 if(url === "/yeti/v1/deleteaccount"){
