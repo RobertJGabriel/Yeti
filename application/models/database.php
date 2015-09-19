@@ -47,6 +47,13 @@
             return $this->runSQL($sql_query);
         }
 
+         public
+        function updateSettings(twitter,gogoduck,bing,google){
+            $sql_query = "UPDATE settings SET twitter=" . twitter   ." ,gogoduck=".  $twitter .  ", bing=" . bing  .", google=" . google ." WHERE companyId=" . $_SESSION["companyId"] . "";
+            $this->runSQL($sql_query);
+        }
+
+
         public
         function delete_account($username,$email){
             $sql_query = "DELETE FROM users WHERE name='" . $username . "' AND email='" . $email ."'";
