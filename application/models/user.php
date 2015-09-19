@@ -21,12 +21,17 @@
             die();
         }
 
+        public function createCompany($companyName){
+
+        }
+
         public
         function register_account(){
             $firstName  =   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
             $lastName   =   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
             $website    =   filter_var($_POST['website'], FILTER_SANITIZE_STRING);
             $email      =   filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $companyName      =   filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
             $password   =   filter_var($_POST['password'], FILTER_SANITIZE_STRING);
             
             $final_password = $this->encrypt_password($password); // Salted Hash
@@ -48,7 +53,9 @@
 
             }
 
-        }
+        }   
+
+
 
         public
         function encrypt_password($password){
@@ -124,8 +131,27 @@
         }
 
         public
+        function updateSearch_Settings(){
+            $twitter = $this->null_check('twitters');
+            $google = $this->null_check("googles");
+            $bing = $this->null_check("bings");
+            $gogoduck = $this->null_check("duckduckgos");
+            $this->database->updateSettings($twitter,$gogoduck,$bing,$google);
+        }
+
+        public function null_check($postName){
+           $temp = '';
+            if("" !== trim($_POST[$postName])){
+                return filter_var($_POST[$postName], FILTER_SANITIZE_STRING);
+            } else {
+                return 'no';
+            }
+        }
+
+
+        public
         function createFolder($companyName){
-            mkdir('installations/' . $companyName, 0700);
+        //    mkdir('installations/' . $companyName, 0700);
             //Creates Folders
         }
 

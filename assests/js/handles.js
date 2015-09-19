@@ -26,6 +26,13 @@ $(function () {
         return false; // avoid to execute the actual submit of the form.
     });
 
+  // This is for the personal Settings
+    $("#new_search_settings").submit(function () {
+        alert('batman');
+        ajaxPostRequest($(this), "/yeti/v1/updateSearchSettings","");
+        return false; // avoid to execute the actual submit of the form.
+    });
+
 
     // Used for checking the url 
     function regexUrlextensioncheck(n) {
@@ -42,7 +49,7 @@ $(function () {
 
 
     function ajaxPostRequest(thisObj,url,message){
-
+        console.log(thisObj);
           $.ajax({
             type: "POST",
             cache: false,

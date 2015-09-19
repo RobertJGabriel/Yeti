@@ -130,6 +130,9 @@
                  case "updateaccount":
                     $this->user->update_account();
                     break;
+                case "updateSearchSettings":
+                    $this->user->updateSearch_Settings();
+                    break;
                 default:
                     echo "None";
                 }

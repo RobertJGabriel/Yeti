@@ -48,8 +48,8 @@
         }
 
          public
-        function updateSettings(twitter,gogoduck,bing,google){
-            $sql_query = "UPDATE settings SET twitter=" . twitter   ." ,gogoduck=".  $twitter .  ", bing=" . bing  .", google=" . google ." WHERE companyId=" . $_SESSION["companyId"] . "";
+        function updateSettings($twitter,$gogoduck,$bing,$google){
+            $sql_query = "UPDATE settings SET twitter='" . $twitter   ."'' ,gogoduck='".  $gogoduck .  "', bing='" . $bing  ."', google='" . $google ."' WHERE companyId=1";
             $this->runSQL($sql_query);
         }
 
