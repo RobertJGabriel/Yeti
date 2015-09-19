@@ -53,6 +53,36 @@
             $this->runSQL($sql_query);
         }
 
+        public function check_if_company_exists($companyName){
+            
+            $sql_query = "SELECT count(companyId)  FROM `company` where companyName='" . $companyName ."'";
+            $result =   $this->runSQL($sql_query);
+            $count = mysqli_fetch_array($result);
+            return  $count[0];
+        }   
+
+        public
+        function createCompany($companyName){
+            $sql_query = "  INSERT INTO `company`(`companyName`,`paided`,`plan`) 
+                            VALUES ('" . $companyName  ."','0','0')";
+            $this->runSQL($sql_query);
+        }
+
+        public function createCompanySettings($companyName){
+            $sql_query = "  INSERT INTO `settings`(`companyId`) 
+                            VALUES ('" . $this->getCompanyId($companyName)  ."')";
+            $this->runSQL($sql_query);
+        }
+
+
+        public function getCompanyId($companyName){
+            $sql_query = "SELECT companyId  FROM `company` where companyName='" . $companyName ."'";
+            $result =   $this->runSQL($sql_query);
+            $count = mysqli_fetch_array($result);
+            return  $count[0];
+
+        }
+
 
         public
         function delete_account($username,$email){

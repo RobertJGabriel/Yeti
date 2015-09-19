@@ -22,7 +22,15 @@
         }
 
         public function createCompany($companyName){
+         $exisit =    $this->database->check_if_company_exists($companyName);
 
+            if ($exisit !== "1"){
+                $this->database->createCompany($companyName);
+                $this->database->createCompanySettings($companyName);
+            }else
+            {
+                echo 'error';
+            }
         }
 
         public
@@ -33,7 +41,7 @@
             $email      =   filter_var($_POST['email'], FILTER_SANITIZE_STRING);
             $companyName      =   filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
             $password   =   filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-            
+            $this->createCompany($companyName);
             $final_password = $this->encrypt_password($password); // Salted Hash
             $is_it_there =$this->database->check_if_account_exists($email);
             

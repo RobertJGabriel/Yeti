@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2015 at 12:47 PM
+-- Generation Time: Sep 19, 2015 at 05:32 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `yeti`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company`
+--
+
+CREATE TABLE IF NOT EXISTS `company` (
+  `companyId` int(100) NOT NULL,
+  `companyName` varchar(200) NOT NULL,
+  `paided` int(10) NOT NULL,
+  `plan` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`companyId`, `companyName`, `paided`, `plan`) VALUES
+(1, 'JAJAJAJAJAJAJ', 0, 0),
+(2, 'rdtfyghjknlm', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -93,12 +114,19 @@ INSERT INTO `searches` (`id`, `search_term`, `userID`, `date`, `time`, `location
 --
 
 CREATE TABLE IF NOT EXISTS `settings` (
-  `twitter` tinyint(1) NOT NULL DEFAULT '0',
-  `gogoduck` tinyint(1) NOT NULL DEFAULT '0',
-  `google` tinyint(1) NOT NULL DEFAULT '0',
-  `bing` tinyint(1) NOT NULL DEFAULT '0',
-  `companyId` int(11) NOT NULL
+  `companyId` int(11) NOT NULL,
+  `twitter` varchar(3) NOT NULL DEFAULT 'No',
+  `gogoduck` varchar(3) NOT NULL DEFAULT 'No',
+  `google` varchar(3) NOT NULL DEFAULT 'No',
+  `bing` varchar(3) NOT NULL DEFAULT 'No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`companyId`, `twitter`, `gogoduck`, `google`, `bing`) VALUES
+(2, 'No', 'No', 'No', 'No');
 
 -- --------------------------------------------------------
 
@@ -116,29 +144,45 @@ CREATE TABLE IF NOT EXISTS `users` (
   `twitter` varchar(11) NOT NULL,
   `hash` char(32) NOT NULL,
   `companyId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `website`, `twitter`, `hash`, `companyId`) VALUES
-(12, '', '', 'robert_gabriel@outlook.com', 'ign', '', '', '', 0),
+(12, '', '', 'robert_gabriel@outlook.com', '', '', '', '', 1),
 (13, 'g', 'f', 'rgh', 'werftghj', 'erfghj', '3', '', 0),
 (14, 'Rob', 'Gabriel', 'gtirob@gmail.com', 's', 'test.ie', '', '', 0),
 (15, 'robert', 'gabriel', 's@GMAIL.COM', 'ZZZZ', 'SSS', '', '', 0),
 (16, 'rffg', 'edfgh', 'dfghj@j.com', 'q', 'fghj', '', '', 0),
-(17, '', '', '', '04b80367f481fafc835322dc7422a6d7dfda20e0', '', '', '', 0);
+(17, '', '', '', '04b80367f481fafc835322dc7422a6d7dfda20e0', '', '', '', 0),
+(18, 'tghj', '4rtyghjk', 'robert_gabriel2@outlook.com', '11b493b702360f7b1342fbf53c6dfb2ab0104fd2', 'robert_gabriel2@outlook.com', '', '', 0),
+(19, 'Keenth', 'HHHH', 'robert_gabSSSriel@outlook.com', '7ce119b3bc8842083b46f189fcf17175b014d8da', 'JAAAJ', '', '', 0),
+(20, 'robert_gabriel', 'g', 'hsss@batman.com', '11b493b702360f7b1342fbf53c6dfb2ab0104fd2', 'ssss', '', '', 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`companyId`),
+  ADD UNIQUE KEY `companyId` (`companyName`);
+
+--
 -- Indexes for table `searches`
 --
 ALTER TABLE `searches`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`companyId`);
 
 --
 -- Indexes for table `users`
@@ -151,6 +195,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+  MODIFY `companyId` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `searches`
 --
 ALTER TABLE `searches`
@@ -159,7 +208,7 @@ ALTER TABLE `searches`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
