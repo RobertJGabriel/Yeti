@@ -1,33 +1,77 @@
 $(function () {
 
+    //Loads some events
+    ajaxGetRequest("/yeti/v1/getPopluarSearches.json","");
 
-    var url = '';
+
     $("#signin").submit(function () {
-        url = "/yeti/v1/signin"; // the script where you handle the form input.
-        $.ajax({
-            type: "POST",
-            cache: false,
-            url: url,
-            data: $("#signin").serialize(), // serializes the form's elements.
-            success: function (data) {
-                alerts(data, 'Logging you in'); //Handles log in
-            }
-        });
+       ajaxPostRequest("/yeti/v1/signin","");
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+    $("#signup").submit(function () {
+        ajaxPostRequest("/yeti/v1/signup","");
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+      // This is for the personal Settings
+    $("#delete_account").submit(function () {
+        ajaxPostRequest("/yeti/v1/deleteaccount",""); // the script where you handle the form input.
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+    // This is for the personal Settings
+    $("#update_account").submit(function () {
+        ajaxPostRequest("/yeti/v1/updateaccount","");
         return false; // avoid to execute the actual submit of the form.
     });
 
 
-    $.ajax({
-        url: '/yeti/v1/getPopluarSearches.json',
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            jQuery.each(data, function (i, val) {
-                appendSearchResult(val);
-            });
-        }
-    });
+    // Used for checking the url 
+    function regexUrlextensioncheck(n) {
+    {
+        var s = document.URL,
+            e = new RegExp(n);
+        e.test(s)
+    }
+    return e.test(s)
+    }
+
+
+
+
+
+    function ajaxPostRequest(url,message){
+
+          $.ajax({
+            type: "POST",
+            cache: false,
+            url: url,
+            data: $(this).serialize(), // serializes the form's elements.
+            success: function (data) {
+                if(url === "/yeti/v1/deleteaccount"){
+                    redirect(); //Logs them out.
+                }else{
+                   alerts(data,message); //Handles log in
+                }
+            }
+        });
+    }
+
+    function ajaxGetRequest(url,message){
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                jQuery.each(data, function (i, val) {
+                    appendSearchResult(val);
+                });
+            }
+        });
+    }
+
 
 
     function appendSearchResult(val) {
@@ -36,95 +80,6 @@ $(function () {
         li.appendChild(document.createTextNode(val['search_term']));
         ul.appendChild(li);
     }
-
-
-
-    // This is for the personal Settings
-    $("#signup").submit(function () {
-        var url = "/yeti/v1/signup"; // the script where you handle the form input.
-        var signupLocation = document.querySelectorAll('#signUp > input[name="displayAlertLocation"]').innerHTML;
-       console.log(signupLocation);
-        $.ajax({
-            type: "POST",
-            cache: false,
-            url: url,
-            data: $("#signup").serialize(), // serializes the form's elements.
-            success: function (data) {
-                console.log(data);
-                alerts(data, 'Account created'); // show response from the php script.
-            }
-        });
-        return false; // avoid to execute the actual submit of the form.
-    });
-
-
-
-    // This is for the personal Settings
-    $("#search_bar").submit(function () {
-        var url = "index.php?action=webresults"; // the script where you handle the form input.
-        $.ajax({
-            type: "POST",
-            cache: false,
-            url: url,
-            data: $("#search_bar").serialize(), // serializes the form's elements.
-            success: function (data) {
-                console.log(data);
-                myFunction(data);
-                $.getScript(
-                    "http://localhost/yeti/assests/third-party/instagram/instagram.js",
-                    function () {
-                        grabImages(jQuery("#search_bar_input").val(), 4,
-                            access_parameters);
-                    });
-            }
-        });
-        return false; // avoid to execute the actual submit of the form.
-    });
-
-
-
-    // This is for the personal Settings
-    $("#search_bar2").submit(function () {
-        alert('test');
-        var url = "index.php?q=" + jQuery("#search_bar_input").val(); // the script where you handle the form input.
-        window.location = url;
-        return false; // avoid to execute the actual submit of the form.
-    });
-
-
-
-
-    // This is for the personal Settings
-    $("#delete_account").submit(function () {
-        var url = "index.php?action=delete_account"; // the script where you handle the form input.
-        $.ajax({
-            type: "POST",
-            cache: false,
-            url: url,
-            data: $("#delete_account").serialize(), // serializes the form's elements.
-            success: function (data) {
-                redirect();
-            }
-        });
-        return false; // avoid to execute the actual submit of the form.
-    });
-
-
-    // This is for the personal Settings
-    $("#update_account").submit(function () {
-        var url = "index.php?action=update_account"; // the script where you handle the form input.
-        $.ajax({
-            type: "POST",
-            cache: false,
-            url: url,
-            data: $("#update_account").serialize(), // serializes the form's elements.
-            success: function (data) {
-                alerts(data, 'Settings Changed '); // show response from the php script.
-            }
-        });
-        return false; // avoid to execute the actual submit of the form.
-    });
-
 
     function alerts(status, message) {
   

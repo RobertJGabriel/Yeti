@@ -124,6 +124,12 @@
                 case "signout":
                     $this->user->logout();
                     break;
+                case "deleteaccount":
+                    $this->user->delete_account();
+                    break;
+                 case "updateaccount":
+                    $this->user->update_account();
+                    break;
                 default:
                     echo "None";
                 }
