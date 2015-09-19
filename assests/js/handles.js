@@ -1,10 +1,9 @@
 $(function () {
-    //picture();
+
 
     var url = '';
-    // This is for the personal Settings
     $("#signin").submit(function () {
-        var url = "/yeti/v1/signin"; // the script where you handle the form input.
+        url = "/yeti/v1/signin"; // the script where you handle the form input.
         $.ajax({
             type: "POST",
             cache: false,
@@ -129,61 +128,44 @@ $(function () {
 
     function alerts(status, message) {
   
-        $("#alert >div").remove();
-        if (status === 'true') {
-                  console.log(status + message);
-            var div = document.createElement("div");
-            div.setAttribute("class", "alert alert-dismissable alert-success");
-            div.setAttribute("role", "alert");
-            div.setAttribute("id", "alertDiv");
-            div.innerHTML = "Awesome, Hold on two seconds " + message;
-            var button = document.createElement("button");
-            button.setAttribute("type", "button");
-            button.setAttribute("class", "close");
-            button.setAttribute("data-dismiss", "alert");
-            button.innerHTML = "x";
-            div.appendChild(button);
-            document.getElementById("alerts").appendChild(div);
+        $("#alert > *").remove();
+        
+        switch (status) {
+        case "true":
+            createAlertDiv("Awesome, Hold on two seconds", "success");
             setTimeout(redirect, 2000);
-
-
-        } else if (status == 'error') {
-            var div = document.createElement("div");
-            div.setAttribute("class", "alert alert-dismissable alert-danger");
-            div.setAttribute("role", "alert");
-            div.setAttribute("id", "alert");
-            div.innerHTML = "Oh snap something is wrong ";
-            document.getElementById("alerts").appendChild(div);
-
-        } else if (status == 'passwordchanged') {
-            var div = document.createElement("div");
-            div.setAttribute("class", "alert alert-dismissable alert-success");
-            div.setAttribute("role", "alert");
-            div.setAttribute("id", "alertDiv");
-            div.innerHTML = "Password Change Successful";
-            var button = document.createElement("button");
-            button.setAttribute("type", "button");
-            button.setAttribute("class", "close");
-            button.setAttribute("data-dismiss", "alert");
-            button.innerHTML = "x";
-            div.appendChild(button);
-            document.getElementById("alerts").appendChild(div);
+            break;
+        case "error":
+            createAlertDiv("Oh snap something is wrong ", "danger");
+            break;
+        case "passwordchanged":
+            createAlertDiv("password Changed", "success");
+            break;
         }
     }
 
 
-    function picture() {
+    function createAlertDiv(message,type){
+        
+        var div = document.createElement("div");
+            div.setAttribute("class", "alert alert-dismissable alert-" + type);
+            div.setAttribute("role", "alert");
+            div.setAttribute("id", "alertDiv");
+            div.innerHTML = message;
+        
+        var button = document.createElement("button");
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "close");
+            button.setAttribute("data-dismiss", "alert");
+            button.innerHTML = "x";
+            div.appendChild(button);
 
-        document.getElementById("webresults").innerHTML = "<div id='searchEmpty' ><img src='assests/img/search.png' alt='The Image' width='128' height='128' /> <h1>No Searches :(</h1></div>";
-
+        document.getElementById("alerts").appendChild(div);
     }
-
-    function myFunction(data) {
-        document.getElementById("webresults").innerHTML = data;
-    }
-
 
     function redirect() {
         window.location = "";
     }
+
+
 });
