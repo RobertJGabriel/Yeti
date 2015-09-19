@@ -27,7 +27,12 @@
             $lastName = $_POST['lastName'];
             $website = $_POST['website'];
             $email = $_POST['email'];
+            // Salted Hash
             $password = $_POST['password'];
+            $salt = "nowelosdfjh1234";
+            $password = $password.$salt;
+            $password = sha1($password);
+
             $is_it_there =$this->database->check_if_account_exists($email);
             
             if ($is_it_there != '0' ){

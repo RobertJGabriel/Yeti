@@ -34,9 +34,7 @@
 
         public
         function register_account($firstName,$lastName,$website,$email,$password){
-            $salt = "nowelosdfjh1234";
-            $password = $password.$salt;
-            $password = sha1($password);
+            
 
             $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`) VALUES (
        '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."')";
