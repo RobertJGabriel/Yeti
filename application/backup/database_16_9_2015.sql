@@ -99,7 +99,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(200) NOT NULL,
   `password` varchar(50) NOT NULL,
   `website` varchar(200) NOT NULL,
-  `twitter` varchar(11) NOT NULL
+  `twitter` varchar(11) NOT NULL,
+  `hash`    char(32)  NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
