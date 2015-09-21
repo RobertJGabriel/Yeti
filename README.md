@@ -1,12 +1,12 @@
 
-![YETI](https://github.com/RobertJGabriel/Yeti/blob/gh-pages/assests/img/banner/headerYeti.png "Yeti")
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assests/img/banner/headerYeti.png "Yeti")
 
 
-##About
+#About
 Yeti is an search engine framwork. It is designed to allow users to create a search engine for the there site in a amatter of seconds. Allowing results from different source. All by adding a line of code.
 
 
-## Information
+# Information
 #####Built in : PHP5.5, Javascript, Bootstrap, Html5, Ajax, Material Bootstrap
 #####Version Number : 0.4.1
 #####State : Alpha
@@ -15,7 +15,7 @@ Yeti is an search engine framwork. It is designed to allow users to create a sea
 
 
 
-##Set Up
+#Set Up
 **Prerequisites:** [Node](http://nodejs.org/).
 - Clone this project to your htdocs folder ``` git clone https://github.com/RobertJGabriel/Yeti.git ```
 - Navigate to the yeti folder.
@@ -30,13 +30,13 @@ Yeti is an search engine framwork. It is designed to allow users to create a sea
 - ``` gulp less  ``` : Build the less files.
 - ``` gulp compressJs  ``` : Builds the javascript file.
 
-##Api Calls
+#Api Calls
 Currently the apis are called used the following url structure. With a base url of 
 ###Base Url 
 ```
 http://localhost/yeti/
 ```
-###Calls 
+##Calls 
 Then add the following 
 
 ```
@@ -64,9 +64,9 @@ Then add the following
 /v1/signout
 ```
 
-##Problems 
-###Windows
-#### Gulp Command not found - error after installing gulp
+#Problems 
+##Windows
+### Gulp Command not found - error after installing gulp
 - Create an environmental variable called NODE_PATH
 - Set it to: ``` %AppData%\npm\node_modules ```
 - Close CMD, and Re-Open to get the new ENV variables
