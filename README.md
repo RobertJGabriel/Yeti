@@ -1,5 +1,5 @@
 
-![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assests/img/banner/headerYeti.png "Yeti")
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assests/img/banner/headerYeti.jpg "Yeti")
 
 
 #About
