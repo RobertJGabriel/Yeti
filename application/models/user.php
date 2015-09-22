@@ -42,21 +42,22 @@
             $companyName      =   filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
             $password   =   filter_var($_POST['password'], FILTER_SANITIZE_STRING);
             $this->createCompany($companyName);
-            $final_password = $this->encrypt_password($password); // Salted Hash
             $is_it_there =$this->database->check_if_account_exists($email);
             
             if ($is_it_there != '0' ){
-                echo 'error';
+                echo 'error1';
             } else {
+              echo  $createSalt = $this->createSalt($email);
+                $final_password = $this->encrypt_password($password,$createSalt); // Salted Hash
                 $before = $this->database->count_amount_of_users();
-                $this->database->register_account($firstName,$lastName,$website,$email,$final_password);
+                $this->database->register_account($firstName,$lastName,$website,$email,$final_password,$createSalt);
                 $after = $this->database->count_amount_of_users();
                 $this->createFolder($website);
                 
                 if(($before + 1) == $after){
                     echo 'true';
                 } else {
-                    echo 'error';
+                    echo 'error2';
                 }
 
             }
@@ -66,11 +67,64 @@
 
 
         public
-        function encrypt_password($password){
-            $salt = "nowelosdfjh1234";
+        function encrypt_password($password,$salt){
+           
             $password = sha1($password.$salt);
             return $password;
         }
+
+      
+
+ function createSalt($email){
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+   // $this->database->setSalt($email,implode($pass));
+    return implode($pass); //turn the array into a string
+
+
+}
+
+
+        function dectypt_password($email,$password){
+
+        $saltfromdb =     $this->database->getsalt($email);
+            $saltpassword =     $this->database->getsaltpassword($email);
+
+       
+
+        if($saltpassword  === sha1($password.$saltfromdb)){
+           return $saltpassword;
+        } else{
+         echo 'false';
+        }
+        }
+
+
+
+
+        public
+        function sign_in(){
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+             $truePassword = $this->dectypt_password($email,$password);
+            $results =   $this->database->sign_in($email,$truePassword);
+            $count = mysqli_num_rows($results);
+            
+            if ( $count != '1') {
+                echo 'error';
+            } else
+            if( $count == '1') {
+                echo 'true';
+                $this->create_sessions($results);
+            }
+
+        }
+
 
         public
         function create_sessions($results){
@@ -98,22 +152,6 @@
             return  $this->database->count_amount_of_users();
         }
 
-        public
-        function sign_in(){
-            $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-            $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-            $results =   $this->database->sign_in($email,$password);
-            $count = mysqli_num_rows($results);
-            
-            if ( $count != '1'){
-                echo 'error';
-            } else
-            if( $count == '1'){
-                echo 'true';
-                $this->create_sessions($results);
-            }
-
-        }
 
         public
         function delete_account(){

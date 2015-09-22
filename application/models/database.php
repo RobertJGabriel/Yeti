@@ -32,14 +32,31 @@
             return $this->runSQL($sql_query);
         }
 
+        public function getsalt($email)
+        {
+            $sql_query = "SELECT `salt` FROM `users` WHERE email ='" . $email . "'";
+            $result =   $this->runSQL($sql_query);
+            $displayAsString = mysqli_fetch_array($result);
+            return  $displayAsString[0];
+        }
+
+        public function getsaltpassword($email)
+        {
+            $sql_query = "SELECT `password` FROM `users` WHERE email ='" . $email . "'";
+            $result =   $this->runSQL($sql_query);
+            $displayAsString = mysqli_fetch_array($result);
+            return  $displayAsString[0];
+        }
         public
-        function register_account($firstName,$lastName,$website,$email,$password){
+        function register_account($firstName,$lastName,$website,$email,$password,$salt){
             
 
-            $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`) VALUES (
-       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."')";
+            $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`,`salt`) VALUES (
+       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."','".  $salt ."'')";
             $this->runSQL($sql_query);
         }
+
+
 
         public
         function getPopluarSearches(){
