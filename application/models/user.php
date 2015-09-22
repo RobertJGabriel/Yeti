@@ -1,13 +1,12 @@
 <?php
     include_once("database.php");
     
-
-// -- Class Name : user
-// -- Purpose : 
-// -- Created On : 
+    // -- Class Name : user
+    // -- Purpose : 
+    // -- Created On : 
+    
     class user{
         var $database;
-        
         public
         function __construct()   {
             $this->database =  new database();
@@ -21,16 +20,17 @@
             die();
         }
 
-        public function createCompany($companyName){
-         $exisit =    $this->database->check_if_company_exists($companyName);
-
+        public
+        function createCompany($companyName){
+            $exisit =    $this->database->check_if_company_exists($companyName);
+            
             if ($exisit !== "1"){
                 $this->database->createCompany($companyName);
                 $this->database->createCompanySettings($companyName);
-            }else
-            {
+            } else            {
                 echo 'error';
             }
+
         }
 
         public
@@ -47,8 +47,9 @@
             if ($is_it_there != '0' ){
                 echo 'error1';
             } else {
-              echo  $createSalt = $this->createSalt($email);
-                $final_password = $this->encrypt_password($password,$createSalt); // Salted Hash
+                $createSalt = $this->createSalt($email);
+                $final_password = $this->encrypt_password($password,$createSalt);
+                // Salted Hash
                 $before = $this->database->count_amount_of_users();
                 $this->database->register_account($firstName,$lastName,$website,$email,$final_password,$createSalt);
                 $after = $this->database->count_amount_of_users();
@@ -62,56 +63,49 @@
 
             }
 
-        }   
-
-
+        }
 
         public
         function encrypt_password($password,$salt){
-           
             $password = sha1($password.$salt);
             return $password;
         }
 
-      
+        
+        function createSalt($email){
+            $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+            $pass = array();
+            //remember to declare $pass as an array
+            $alphaLength = strlen($alphabet) - 1;
+            //put the length -1 in cache
+            for ($i = 0; $i < 8; $i++) {
+                $n = rand(0, $alphaLength);
+                $pass[] = $alphabet[$n];
+            }
 
- function createSalt($email){
-    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-    $pass = array(); //remember to declare $pass as an array
-    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-    for ($i = 0; $i < 8; $i++) {
-        $n = rand(0, $alphaLength);
-        $pass[] = $alphabet[$n];
-    }
-   // $this->database->setSalt($email,implode($pass));
-    return implode($pass); //turn the array into a string
+            // $this->database->setSalt($email,implode($pass));
+            return implode($pass);
+            //turn the array into a string
+        }
 
-
-}
-
-
+        
         function dectypt_password($email,$password){
-
-        $saltfromdb =     $this->database->getsalt($email);
+            $saltfromdb =     $this->database->getsalt($email);
             $saltpassword =     $this->database->getsaltpassword($email);
+            
+            if($saltpassword  === sha1($password.$saltfromdb)){
+                return $saltpassword;
+            } else {
+                echo 'false';
+            }
 
-       
-
-        if($saltpassword  === sha1($password.$saltfromdb)){
-           return $saltpassword;
-        } else{
-         echo 'false';
         }
-        }
-
-
-
 
         public
         function sign_in(){
             $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-             $truePassword = $this->dectypt_password($email,$password);
+            $truePassword = $this->dectypt_password($email,$password);
             $results =   $this->database->sign_in($email,$truePassword);
             $count = mysqli_num_rows($results);
             
@@ -124,7 +118,6 @@
             }
 
         }
-
 
         public
         function create_sessions($results){
@@ -151,7 +144,6 @@
         function get_amount_of_users(){
             return  $this->database->count_amount_of_users();
         }
-
 
         public
         function delete_account(){
@@ -185,19 +177,21 @@
             $this->database->updateSettings($twitter,$gogoduck,$bing,$google);
         }
 
-        public function null_check($postName){
-           $temp = '';
+        public
+        function null_check($postName){
+            $temp = '';
+            
             if("" !== trim($_POST[$postName])){
                 return filter_var($_POST[$postName], FILTER_SANITIZE_STRING);
             } else {
                 return 'no';
             }
-        }
 
+        }
 
         public
         function createFolder($companyName){
-        //    mkdir('installations/' . $companyName, 0700);
+            //    mkdir('installations/' . $companyName, 0700);
             //Creates Folders
         }
 
@@ -210,8 +204,6 @@
         function updateTwitter_Session($twitter){
             $_SESSION["twitter"] =  $twitter;
         }
-
-        
 
     }
 

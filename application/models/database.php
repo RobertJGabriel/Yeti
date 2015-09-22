@@ -32,31 +32,28 @@
             return $this->runSQL($sql_query);
         }
 
-        public function getsalt($email)
-        {
+        public
+        function getsalt($email)        {
             $sql_query = "SELECT `salt` FROM `users` WHERE email ='" . $email . "'";
             $result =   $this->runSQL($sql_query);
             $displayAsString = mysqli_fetch_array($result);
             return  $displayAsString[0];
         }
 
-        public function getsaltpassword($email)
-        {
+        public
+        function getsaltpassword($email)        {
             $sql_query = "SELECT `password` FROM `users` WHERE email ='" . $email . "'";
             $result =   $this->runSQL($sql_query);
             $displayAsString = mysqli_fetch_array($result);
             return  $displayAsString[0];
         }
+
         public
         function register_account($firstName,$lastName,$website,$email,$password,$salt){
-            
-
             $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`,`salt`) VALUES (
-       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."','".  $salt ."'')";
+       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."','".  $salt ."')";
             $this->runSQL($sql_query);
         }
-
-
 
         public
         function getPopluarSearches(){
@@ -64,19 +61,19 @@
             return $this->runSQL($sql_query);
         }
 
-         public
+        public
         function updateSettings($twitter,$gogoduck,$bing,$google){
             $sql_query = "UPDATE settings SET twitter='" . $twitter   ."'' ,gogoduck='".  $gogoduck .  "', bing='" . $bing  ."', google='" . $google ."' WHERE companyId=1";
             $this->runSQL($sql_query);
         }
 
-        public function check_if_company_exists($companyName){
-            
+        public
+        function check_if_company_exists($companyName){
             $sql_query = "SELECT count(companyId)  FROM `company` where companyName='" . $companyName ."'";
             $result =   $this->runSQL($sql_query);
             $count = mysqli_fetch_array($result);
             return  $count[0];
-        }   
+        }
 
         public
         function createCompany($companyName){
@@ -85,21 +82,20 @@
             $this->runSQL($sql_query);
         }
 
-        public function createCompanySettings($companyName){
+        public
+        function createCompanySettings($companyName){
             $sql_query = "  INSERT INTO `settings`(`companyId`) 
                             VALUES ('" . $this->getCompanyId($companyName)  ."')";
             $this->runSQL($sql_query);
         }
 
-
-        public function getCompanyId($companyName){
+        public
+        function getCompanyId($companyName){
             $sql_query = "SELECT companyId  FROM `company` where companyName='" . $companyName ."'";
             $result =   $this->runSQL($sql_query);
             $count = mysqli_fetch_array($result);
             return  $count[0];
-
         }
-
 
         public
         function delete_account($username,$email){
