@@ -19,6 +19,7 @@
         var $bingSearchResultsLimit = 5;
         var $images = '';
 
+        var $totalResults = array();
 
 
         // -- Function Name : __construct
@@ -28,6 +29,7 @@
         function __construct()   {
             $this->database =  new database();
             $this->twitter =  new twitter();
+            $this->add_search();
         }
 
 
@@ -36,17 +38,17 @@
         // -- Purpose : Creates the search and  calls the apis
         public
         function add_search(){
-            $search_Term = $_POST['search_bar_input'];
+            $search_Term = "cat";
             $this->bing('Web',$search_Term);
-            $this->duckduckgo($search_Term);
-            $this->google($search_Term);
-            $this->database->add_search($search_Term,$_SESSION['ID']);
+          //  $this->duckduckgo($search_Term);
+          //  $this->google($search_Term);
+          //  $this->database->add_search($search_Term,$_SESSION['ID']);
             $this->displayResults($this->results);
             
             if ($_SESSION['twitter'] === '1'){
                 $this->post_twitter();
             }
-
+print_r($this->totalResults);
         }
 
         // -- Function Name : post_twitter
@@ -59,17 +61,7 @@
 
 
 
-        // -- Function Name : renameKey
-        // -- Params : 
-        // -- Purpose : Rename the keys in the arry for search
-        public
-        function renameKey(){
-            foreach ($this->duckduckgoResults->RelatedTopics[0] as $arr)            {
-                $arr['content'] = $arr['Text'];
-                unset($arr['Text']);
-            }
-
-        }
+       
 
         // -- Function Name : duckduckgo
         // -- Params : $search_Term
@@ -144,23 +136,29 @@
             // Decode the response. 
             $jsonObj = json_decode($response);
             $resultStr = '';
+   
             // Parse each result according to its metadata type. 
             foreach($jsonObj->d->results as $value) {
                 switch ($value->__metadata->type) {
                     case 'WebResult':
+                   
+                        $tempResult = array('title' => $value->Title, 'description' => $value->Description, 'url' => $value->Url, 'engine' => 'bing');
+                        array_push($this->totalResults,$tempResult);
                         $resultStr = "<ul class='nav nav-tabs nav-stacked well' ><div class='panel panel-info'><div class='panel-heading'><h3 class='panel-title'><a href=\"{$value->Url}\">{$value->Title}</a></h3></div><div class='panel-body'><h5><a href=\{$value->Url}\">{$value->Title}</a></h5><p>{$value->Description}</p><span class='label label-info'>Bing</span></li>    </div></div></ul>" ;
                         array_push( $this->results,$resultStr);
                         break;
-                    case 'ImageResult':
-                        $resultStr = "<h4>{$value->Title}({$value->Width}x{$value->Height}) " . "{$value->FileSize}bytes)</h4>" . "<li><div class='col-xs-6 col-md-3'><a class='test' href=\"{$value->MediaUrl}\">" . "<img src=\"{$value->Thumbnail->MediaUrl}\"></a></div></li>";
-                        array_push( $this->images,$resultStr);
-                        break;
                 }
             }
+
+      
             // $contents = str_replace('{RESULTS}', $resultStr, $contents);
         }
 
 
+        public
+        function ripResults(){
+
+        }
 
 
         // -- Function Name : displayResults
@@ -172,6 +170,8 @@
             foreach ($arr as &$value) {
                 echo $value;
             }
+
+            echo json_encode($this->totalResults);
         }
 
 }
