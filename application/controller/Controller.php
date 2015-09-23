@@ -121,6 +121,9 @@
                 case "manualImportSearch":
                     $this->search->manualImportSearch();
                     break;
+                case "manualImportEmployee":
+                    $this->search->manualImportEmployee();
+                    break;
                 case "signup":
                     $this->user->register_account();
                     break;

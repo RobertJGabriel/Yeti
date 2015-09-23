@@ -66,6 +66,18 @@ public function importSearch($title,$description,$url_or_link,$manualImported,$c
 
 }
 
+public function importEmployee($name,$title,$email,$phone,$manualImported,$companyId){
+     echo 'hi';
+
+     $sql_query = "INSERT INTO `employee`(`name`,`title`,`email`,`phone`, `manual`, `companyId`) VALUES (
+       '" . $name  ."','" . $title  ."','" . $email  ."','" . $phone  ."','" . $manualImported  ."','" . $companyId  ."')";
+            $this->runSQL($sql_query);
+
+
+}
+
+
+
         public
         function getPopluarSearches(){
             $sql_query = "SELECT `search_term`,`userID`,`date`,`time`,`location` FROM `searches`  WHERE `companyId` = '" . $_SESSION["companyId"] .  "' GROUP BY search_term";

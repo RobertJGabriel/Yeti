@@ -42,6 +42,14 @@ $(function () {
     });
 
 
+    // This is for the personal Settings
+    $("#manualImportEmployee").submit(function () {
+        alert('batman is cool and this worked, employyee ?');
+        ajaxPostRequest($(this), "/yeti/v1/manualImportEmployee","");
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+
     // Used for checking the url 
     function regexUrlextensioncheck(n) {
     {

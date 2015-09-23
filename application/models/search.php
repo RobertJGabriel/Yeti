@@ -171,6 +171,17 @@ print_r($this->totalResults);
             $this->database->importSearch($title,$description,$url_or_link,1,$_SESSION["companyId"]);
         }
 
+        public function manualImportEmployee()
+        {
+            $name  =   filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+            $title   =   filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+            $phone    =   filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
+             $email    =   filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+   
+
+            $this->database->importEmployee($name,$title,$email,$phone,1,$_SESSION["companyId"]);
+        }
+
         // -- Function Name : displayResults
         // -- Params : $arr
         // -- Purpose : Display the results and search it.
