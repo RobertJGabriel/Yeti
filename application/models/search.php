@@ -29,7 +29,7 @@
         function __construct()   {
             $this->database =  new database();
             $this->twitter =  new twitter();
-            $this->add_search();
+          //  $this->add_search();
         }
 
 
@@ -160,6 +160,16 @@ print_r($this->totalResults);
 
         }
 
+
+        public function manualImportSearch()
+        {
+            $title  =   filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+            $description   =   filter_var($_POST['description'], FILTER_SANITIZE_STRING);
+            $url_or_link    =   filter_var($_POST['url_or_link'], FILTER_SANITIZE_STRING);
+   
+
+            $this->database->importSearch($title,$description,$url_or_link,1,$_SESSION["companyId"]);
+        }
 
         // -- Function Name : displayResults
         // -- Params : $arr

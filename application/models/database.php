@@ -55,6 +55,17 @@
             $this->runSQL($sql_query);
         }
 
+
+public function importSearch($title,$description,$url_or_link,$manualImported,$companyId){
+     
+
+     $sql_query = "INSERT INTO `files`(`title`,`description`,`url`, `manual`, `companyId`) VALUES (
+       '" . $title  ."','" . $description  ."','" . $url_or_link  ."','" . $manualImported  ."','" . $companyId  ."')";
+            $this->runSQL($sql_query);
+
+
+}
+
         public
         function getPopluarSearches(){
             $sql_query = "SELECT `search_term`,`userID`,`date`,`time`,`location` FROM `searches`  WHERE `companyId` = '" . $_SESSION["companyId"] .  "' GROUP BY search_term";

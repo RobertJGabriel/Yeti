@@ -34,6 +34,14 @@ $(function () {
     });
 
 
+     // This is for the personal Settings
+    $("#manualImportSearch").submit(function () {
+        alert('batman is cool and this worked ?');
+        ajaxPostRequest($(this), "/yeti/v1/manualImportSearch","");
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+
     // Used for checking the url 
     function regexUrlextensioncheck(n) {
     {

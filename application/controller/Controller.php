@@ -118,6 +118,9 @@
                 case "signin":
                     $this->user->sign_in();
                     break;
+                case "manualImportSearch":
+                    $this->search->manualImportSearch();
+                    break;
                 case "signup":
                     $this->user->register_account();
                     break;
