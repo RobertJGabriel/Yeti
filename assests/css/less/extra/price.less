@@ -1,0 +1,56 @@
+// Color variables (appears count calculates by raw css)
+@color0: #28a7e9; // Appears 4 times
+@color1: #ffffff; // Appears 3 times
+
+
+
+#pricing {
+	background: #f8f8f8;
+	padding-bottom: 80px;
+	padding-top: 80px;
+	text-align: center;
+	h2 {
+		padding-bottom: 60px;
+	}
+	.pricing {
+		background: @color1;
+		.pricing-title {
+			background: @color0;
+			color: @color1;
+			font-weight: bold;
+			padding: 30px;
+			p {
+				font-size: 20px;
+			}
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			li {
+				display: block;
+				list-style: none;
+				padding: 16px;
+			}
+		}
+		.btn {
+			background: transparent;
+			border-radius: 0px;
+			border: 1px solid @color0;
+			color: @color0;
+			font-weight: bold;
+			margin-bottom: 30px;
+			margin-top: 20px;
+			padding-left: 40px;
+			padding-right: 40px;
+			transition: all 0.3s ease;
+			&:hover {
+				background: @color0;
+				color: @color1;
+			}
+		}
+	}
+	.active {
+		bottom: 20px;
+		position: relative;
+	}
+}
