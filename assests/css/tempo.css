@@ -18,6 +18,12 @@ body
 	color: #fff;
 }
 
+.center {
+    width: 200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
 /* start h1 group */
 h1 { 
     margin-top: 0;
