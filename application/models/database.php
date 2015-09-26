@@ -49,9 +49,9 @@
         }
 
         public
-        function register_account($firstName,$lastName,$website,$email,$password,$salt){
-            $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`,`salt`) VALUES (
-       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."','".  $salt ."')";
+        function register_account($firstName,$lastName,$website,$email,$password,$salt,$companyId){
+            $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`,`salt`,`companyId`) VALUES (
+       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."','".  $salt ."','". $companyId .  "')";
             $this->runSQL($sql_query);
         }
 
