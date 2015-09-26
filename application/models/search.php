@@ -168,8 +168,7 @@ print_r($this->totalResults);
             $url_or_link    =   filter_var($_POST['url_or_link'], FILTER_SANITIZE_STRING);
             $information = array("a"=>"red");
             
-              foreach($_POST['information'] as $k=>$scene) {
-                echo $scene;
+            foreach($_POST['information'] as $k=>$scene) {
                 array_push($information,$scene);
             }
             $information = json_encode($information);
