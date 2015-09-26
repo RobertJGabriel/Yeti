@@ -175,6 +175,30 @@ print_r($this->totalResults);
             $this->database->importSearch($title,$description,$url_or_link,$information,1,$_SESSION["companyId"]);
         }
 
+        function displayTable(){
+
+            $results = $this->database->getSearchResults($_SESSION["companyId"]);        
+
+            $count = mysqli_num_rows($results);
+            
+            if($count===1){
+                while($row = $results->fetch_assoc()){
+                    $_SESSION["ID"] =  $row['id'];
+                    $_SESSION["first_Name"] =  $row['firstName'];
+                    $_SESSION["last_Name"] =  $row['lastName'];
+                    $_SESSION["website"] =  $row['website'];
+                    $_SESSION["email"] =  $row['email'];
+                    $_SESSION["twitter"] =  $row['twitter'];
+                    $_SESSION["password"] =  $row['password'];
+                    $_SESSION["companyId"] =  $row['companyId'];
+                }
+
+            }
+
+
+        }
+
+
 
 
         // -- Function Name : displayResults

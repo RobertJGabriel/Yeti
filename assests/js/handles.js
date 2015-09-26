@@ -60,6 +60,12 @@ $(function () {
     return e.test(s)
     }
 
+    function getTable(){
+
+        
+    }
+
+
 
 
     var el = document.getElementById("plusInput");
