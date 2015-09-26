@@ -166,14 +166,12 @@ print_r($this->totalResults);
             $title  =   filter_var($_POST['title'], FILTER_SANITIZE_STRING);
             $description   =   filter_var($_POST['description'], FILTER_SANITIZE_STRING);
             $url_or_link    =   filter_var($_POST['url_or_link'], FILTER_SANITIZE_STRING);
-            $information = array("a"=>"red");
+            $information = array("term"=>$title);
             
             foreach($_POST['information'] as $k=>$scene) {
                 array_push($information,$scene);
             }
             $information = json_encode($information);
-
-
             $this->database->importSearch($title,$description,$url_or_link,$information,1,$_SESSION["companyId"]);
         }
 

@@ -62,6 +62,29 @@ $(function () {
 
 
 
+    var el = document.getElementById("plusInput");
+        el.addEventListener("click", createInput);
+
+
+    function createInput(){
+
+        var div = document.createElement("div");
+            div.setAttribute("class", "form-group");
+
+        var input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("class", "form-control floating-label");
+            input.setAttribute("name", "information[]");
+            input.setAttribute("placeholder", "Something Extra");
+
+          
+        div.appendChild(input);
+
+        document.getElementById("addedInput").appendChild(div);
+
+    }
+
+
 
 
     function ajaxPostRequest(thisObj,url,message){
