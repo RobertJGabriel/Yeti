@@ -22,8 +22,7 @@ Yeti is an search engine framwork. It is designed to allow users to create a sea
 - Run ``` npm install ```
 - Import yeti.sql into a database.
 - Open up Setting.php and add in your information for the database connection.
-- Added 128.0.0.2 www.yetisearch.io to the htaccess file.
-- All done, Just finsihed [here](http://www.yeti.io)
+- All done, Just finsihed [here](http://localhost/yeti)
 
 ## Build Commands
 - ``` gulp build  ``` : Builds both the javascript and less files
