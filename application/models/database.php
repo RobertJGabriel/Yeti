@@ -153,12 +153,21 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
         }
 
         public
+        function getSearch(){
+         $sql_query = "SELECT `title`,`description`,`information`,`url`,`manual` FROM `files`  WHERE `companyId` ='". $_SESSION["companyId"]  .  "'";
+           return  $this->runSQL($sql_query);
+            
+        }
+
+
+              public
         function count_amount_of_searches(){
             $sql_query = "SELECT count(id) as count FROM `searches`";
             $result =$this->runSQL($sql_query);
             $count = mysqli_fetch_array($result);
-            return  $count[0];
+            return  $count;
         }
+
 
         public
         function check_if_password_changed($password){

@@ -30,6 +30,20 @@
             return $json = json_encode($results);
         }
 
+
+        public
+        function getSearches(){
+           $sql = $this->database->getSearch();
+
+            $rows = array();
+            while($r = mysqli_fetch_assoc($sql)) {
+                $rows[] = $r;
+            }
+
+            return json_encode($rows);
+        }
+
+
         public
         function getPopluarSearches(){
             $sql = $this->database->getPopluarSearches();

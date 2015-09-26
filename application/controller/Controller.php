@@ -115,6 +115,9 @@
                 case "getPopluarSearches.json":
                     $this->apiResponds  = $this->api->getPopluarSearches();
                     break;
+                case "getsearches.json":
+                    $this->apiResponds  = $this->api->getSearches();
+                    break;
                 case "signin":
                     $this->user->sign_in();
                     break;
