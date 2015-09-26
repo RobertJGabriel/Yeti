@@ -56,21 +56,11 @@
         }
 
 
-public function importSearch($title,$description,$url_or_link,$manualImported,$companyId){
+public function importSearch($title,$description,$url_or_link,$information,$manualImported,$companyId){
      
 
-     $sql_query = "INSERT INTO `files`(`title`,`description`,`url`, `manual`, `companyId`) VALUES (
-       '" . $title  ."','" . $description  ."','" . $url_or_link  ."','" . $manualImported  ."','" . $companyId  ."')";
-            $this->runSQL($sql_query);
-
-
-}
-
-public function importEmployee($name,$title,$email,$phone,$manualImported,$companyId){
-     echo 'hi';
-
-     $sql_query = "INSERT INTO `employee`(`name`,`title`,`email`,`phone`, `manual`, `companyId`) VALUES (
-       '" . $name  ."','" . $title  ."','" . $email  ."','" . $phone  ."','" . $manualImported  ."','" . $companyId  ."')";
+     $sql_query = "INSERT INTO `files`(`title`,`description`,`url`, `information`, `manual`, `companyId`) VALUES (
+       '" . $title  ."','" . $description  ."','" . $url_or_link  ."','". $information  ."','" . $manualImported  ."','" . $companyId  ."')";
             $this->runSQL($sql_query);
 
 

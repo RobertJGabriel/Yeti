@@ -96,7 +96,7 @@ $(function () {
         });
     }
 
-
+    
 
     function appendSearchResult(val) {
         var ul = document.getElementById("popluarSearches");
