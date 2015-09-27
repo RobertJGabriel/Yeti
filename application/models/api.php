@@ -28,11 +28,11 @@
         }
 
         public
-        function getSearches($key){
+        function getSearches($key,$term){
             $companyId = $this->database->getCompanyByKey($key);
             
             if ($companyId !== ""){
-                $sql = $this->database->getSearch($companyId);
+                $sql = $this->database->getSearch($companyId,$term);
                 $rows = array();
                 while($r = mysqli_fetch_assoc($sql)) {
                     $rows[] = $r;
@@ -40,7 +40,7 @@
 
                 return json_encode($rows);
             } else {
-                return 'ss';
+                return 'none';
             }
 
         }
