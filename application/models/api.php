@@ -1,14 +1,11 @@
 <?php
-
     include_once("application/models/database.php");
+    // -- Class Name : api
+    // -- Purpose : 
+    // -- Created On : 
     
-
-// -- Class Name : api
-// -- Purpose : 
-// -- Created On : 
     class api{
         var $database;
-
         public
         function __construct() {
             $this->database = new database();
@@ -30,26 +27,23 @@
             return $json = json_encode($results);
         }
 
-
         public
         function getSearches($key){
-       $companyId = $this->database->getCompanyByKey($key);
+            $companyId = $this->database->getCompanyByKey($key);
+            
+            if ($companyId !== ""){
+                $sql = $this->database->getSearch($companyId);
+                $rows = array();
+                while($r = mysqli_fetch_assoc($sql)) {
+                    $rows[] = $r;
+                }
 
-if ($companyId !== ""){
-           $sql = $this->database->getSearch($companyId);
-
-            $rows = array();
-            while($r = mysqli_fetch_assoc($sql)) {
-                $rows[] = $r;
+                return json_encode($rows);
+            } else {
+                return 'ss';
             }
 
-            return json_encode($rows);
-        }else{
-
-            return 'ss';
         }
-        }
-
 
         public
         function getPopluarSearches(){
