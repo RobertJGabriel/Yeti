@@ -40,6 +40,15 @@
             return  $displayAsString[0];
         }
 
+
+           public
+        function getCompanyByKey($key)        {
+            $sql_query = "SELECT `companyId` FROM `users` WHERE salt ='" . $key . "'";
+            $result =   $this->runSQL($sql_query);
+            $displayAsString = mysqli_fetch_array($result);
+            return  $displayAsString[0];
+        }
+
         public
         function getsaltpassword($email)        {
             $sql_query = "SELECT `password` FROM `users` WHERE email ='" . $email . "'";
@@ -153,8 +162,8 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
         }
 
         public
-        function getSearch(){
-         $sql_query = "SELECT `title`,`description`,`information`,`url`,`manual` FROM `files`  WHERE `companyId` ='". $_SESSION["companyId"]  .  "'";
+        function getSearch($companyId){
+         $sql_query = "SELECT `title`,`description`,`information`,`url`,`manual` FROM `files`  WHERE `companyId` ='". $companyId .  "'";
            return  $this->runSQL($sql_query);
             
         }

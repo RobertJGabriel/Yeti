@@ -32,8 +32,11 @@
 
 
         public
-        function getSearches(){
-           $sql = $this->database->getSearch();
+        function getSearches($key){
+       $companyId = $this->database->getCompanyByKey($key);
+
+if ($companyId !== ""){
+           $sql = $this->database->getSearch($companyId);
 
             $rows = array();
             while($r = mysqli_fetch_assoc($sql)) {
@@ -41,6 +44,10 @@
             }
 
             return json_encode($rows);
+        }else{
+
+            return 'ss';
+        }
         }
 
 

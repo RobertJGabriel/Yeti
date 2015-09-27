@@ -116,7 +116,8 @@
                     $this->apiResponds  = $this->api->getPopluarSearches();
                     break;
                 case "getsearches.json":
-                    $this->apiResponds  = $this->api->getSearches();
+
+                    $this->apiResponds  = $this->api->getSearches($_GET['apikey']);
                     break;
                 case "signin":
                     $this->user->sign_in();
