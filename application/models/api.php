@@ -33,6 +33,7 @@
             
             if ($companyId !== ""){
                 $sql = $this->database->getSearch($companyId,$term);
+              
                 $rows = array();
                 while($r = mysqli_fetch_assoc($sql)) {
                     $rows[] = $r;

@@ -163,7 +163,7 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
 
         public
         function getSearch($companyId,$term){
-         $sql_query = "SELECT `title`,`description`,`information`,`url`,`manual` FROM `files`  WHERE `companyId` ='". $companyId .  "'";
+         $sql_query = "SELECT `title`,`description`,`information`,`url`,`manual` FROM `files`  WHERE `companyId` ='". $companyId .  "' AND `title` LIKE '%". $term  ."%'";
            return  $this->runSQL($sql_query);
             
         }
