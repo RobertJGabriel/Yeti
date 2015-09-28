@@ -135,6 +135,7 @@
                     $_SESSION["twitter"] =  $row['twitter'];
                     $_SESSION["password"] =  $row['password'];
                     $_SESSION["companyId"] =  $row['companyId'];
+                    $_SESSION["apikey"] = $row['salt'];
                 }
 
             }

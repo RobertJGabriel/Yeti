@@ -28,7 +28,7 @@
 
         public
         function sign_in($email,$password){
-            $sql_query = "SELECT `id`,`firstName`,`lastName`,`website`,`email`,`password`, `twitter`,`companyId` FROM `users` WHERE email ='" . $email . "' AND password ='" . $password ."'";
+            $sql_query = "SELECT `id`,`firstName`,`lastName`,`website`,`email`,`password`, `twitter`,`companyId`,`salt` FROM `users` WHERE email ='" . $email . "' AND password ='" . $password ."'";
             return $this->runSQL($sql_query);
         }
 
