@@ -1,8 +1,11 @@
 $(function () {
 
     //Loads some events
-    ajaxGetRequest("/yeti/v1/getPopluarSearches.json","");
 
+    $("#searchbox").submit(function () {
+       ajaxPostRequest( "/yeti/v1/getsearches.json?apikey=1bhBHE4Z&term=batman","");
+        return false; // avoid to execute the actual submit of the form.
+    });
 
     $("#signin").submit(function () {
        ajaxPostRequest($(this), "/yeti/v1/signin","");
@@ -40,7 +43,6 @@ $(function () {
         ajaxPostRequest($(this), "/yeti/v1/manualImportSearch","");
         return false; // avoid to execute the actual submit of the form.
     });
-
 
     // This is for the personal Settings
     $("#manualImportEmployee").submit(function () {
