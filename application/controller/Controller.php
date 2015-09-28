@@ -116,8 +116,13 @@
                     $this->apiResponds  = $this->api->getPopluarSearches();
                     break;
                 case "getsearches.json":
-                    $term = 'batman';
-                    if(!isset($_GET["term"])){  $term = $_GET["term"];  }
+                 
+                    if(isset($_GET["term"])){ 
+                     $term = $_GET["term"]; 
+                      } else{
+                          $term = 'a'; 
+                      }
+                   
                     $this->apiResponds  = $this->api->getSearches($_GET['apikey'],$term);
                     break;
                 case "signin":
