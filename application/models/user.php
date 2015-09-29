@@ -150,8 +150,9 @@
         public
         function delete_account(){
             $email = $_SESSION["email"];
-            $username = $_SESSION["NAME"];
+            $username = $_SESSION["first_Name"];
             $this->database->delete_account($username,$email);
+            print_r($username . $email);
         }
 
         public

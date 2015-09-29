@@ -121,7 +121,7 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
 
         public
         function delete_account($username,$email){
-            $sql_query = "DELETE FROM users WHERE name='" . $username . "' AND email='" . $email ."'";
+            $sql_query = "DELETE FROM users WHERE firstName='" . $username . "' AND email='" . $email ."'";
             $this->runSQL($sql_query);
         }
 

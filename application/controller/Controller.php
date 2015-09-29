@@ -46,8 +46,11 @@
                     case "settings":
                         echo "<h1>settings</h1>";
                         break;
+                    case "delete":
+                        echo "<h1>delete</h1>";
+                        break;
                     case "search":
-                        echo "<h1>search</h1>";
+                         $this->user->view('results');
                         break;
                     case "pricing":
                         $this->user->view('home');
@@ -86,6 +89,9 @@
                 switch ($routes[1]) {
                     case "about":
                         echo "<h1>about</h1>";
+                        break;
+                    case "search":
+                         $this->user->view('results');
                         break;
                     case "v1":
                         $this->apiCalls($routes[2]);
@@ -142,10 +148,12 @@
                     break;
                 case "deleteaccount":
                     $this->user->delete_account();
+                    $this->user->logout();
                     break;
                  case "updateaccount":
                     $this->user->update_account();
                     break;
+
                 case "updateSearchSettings":
                     $this->user->updateSearch_Settings();
                     break;

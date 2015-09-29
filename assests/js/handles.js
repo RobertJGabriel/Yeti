@@ -2,11 +2,23 @@ $(function () {
 
     //Loads some events
 
-    $("#searchbox").submit(function () {
-       ajaxPostRequest( "/yeti/v1/getsearches.json?apikey=1bhBHE4Z&term=batman","");
+    $("#search_bar").submit(function () {
+        var myParam = location.search.split('apikey=')[1];
+        var term = location.search.split('term=')[1];
+
+       ajaxGetRequest( "/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term,"");
         return false; // avoid to execute the actual submit of the form.
     });
 
+    $("#deleteButton").click(function () {
+        alert('ss');
+        ajaxPostRequest("", "/yeti/v1/deleteaccount","");
+ 
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+
+  
     $("#signin").submit(function () {
        ajaxPostRequest($(this), "/yeti/v1/signin","");
         return false; // avoid to execute the actual submit of the form.
@@ -104,11 +116,9 @@ $(function () {
             data: thisObj.serialize(), // serializes the form's elements.
             success: function (data) {
                 console.log(data);
-                if(url === "/yeti/v1/deleteaccount"){
-                    redirect(); //Logs them out.
-                }else{
+              
                    alerts(data,message); //Handles log in
-                }
+                
             }
         });
     }
@@ -119,7 +129,7 @@ $(function () {
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                console.log('aa' + data);
                 jQuery.each(data, function (i, val) {
                     appendSearchResult(val);
                 });
@@ -132,8 +142,52 @@ $(function () {
     function appendSearchResult(val) {
         var ul = document.getElementById("popluarSearches");
         var li = document.createElement("li");
-        li.appendChild(document.createTextNode(val['search_term']));
+        li.appendChild(document.createTextNode(val['description']));
         ul.appendChild(li);
+
+
+
+
+
+
+
+
+    }
+
+
+    function createSearchResult(){
+ $("#webresults > *").remove();
+
+var test  = document.getElementById('webresults');
+
+    var div = document.createElement("div");
+        div.setAttribute("class", "panel panel-success");
+        div.setAttribute("role", "alert");
+        div.setAttribute("id", "");
+        
+    var div2 = document.createElement("div");
+        div2.setAttribute("class", "panel-heading");
+      
+
+        div.appendChild(div2);
+
+    var div3 = document.createElement("h3");
+        div3.setAttribute("class", "panel-title");
+         div3.innerHTML = 'message';
+
+        div2.appendChild(div3);
+
+       var div4 = document.createElement("div");
+        div4.setAttribute("class", "panel-body");
+          div4.innerHTML = 'message';
+
+
+        div.appendChild(div4);
+
+ test.appendChild(div);
+
+
+
     }
 
     function alerts(status, message) {
@@ -153,6 +207,9 @@ $(function () {
             break;
         }
     }
+
+
+
 
 
     function createAlertDiv(message,type){
