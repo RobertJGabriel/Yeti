@@ -1,13 +1,18 @@
 $(function () {
 
-    //Loads some events
+    var myParam = location.search.split('apikey=')[1];
+    var term = location.search.split('term=')[1];
+    if(myParam !== ''){
+            $("#webresults > *").remove();
+      ajaxGetRequest( "/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term +"");
+    }
+
 
     $("#search_bar").submit(function () {
-        var myParam = location.search.split('apikey=')[1];
-        var term = location.search.split('term=')[1];
-
-       ajaxGetRequest( "/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term,"");
-        return false; // avoid to execute the actual submit of the form.
+        alert('s');
+            var myParam = location.search.split('apikey=')[1];
+        window.location = "http://localhost/yeti/search?apikey=" + myParam + "&term=k";
+       
     });
 
     $("#deleteButton").click(function () {
@@ -131,7 +136,7 @@ $(function () {
             success: function (data) {
                 console.log('aa' + data);
                 jQuery.each(data, function (i, val) {
-                    appendSearchResult(val);
+                    createSearchResult(val);
                 });
             }
         });
@@ -155,36 +160,39 @@ $(function () {
     }
 
 
-    function createSearchResult(){
- $("#webresults > *").remove();
+    function createSearchResult(val){
+    
 
-var test  = document.getElementById('webresults');
+    var test  = document.getElementById('webresults');
 
     var div = document.createElement("div");
         div.setAttribute("class", "panel panel-success");
         div.setAttribute("role", "alert");
         div.setAttribute("id", "");
-        
+    
+    var a = document.createElement('a');
+    var linkText = document.createTextNode(val['title']);
+a.appendChild(linkText);
+a.title = val['title'];
+a.href = val['url'];
+
     var div2 = document.createElement("div");
         div2.setAttribute("class", "panel-heading");
-      
 
         div.appendChild(div2);
 
     var div3 = document.createElement("h3");
         div3.setAttribute("class", "panel-title");
-         div3.innerHTML = 'message';
+        div3.appendChild(a);
 
         div2.appendChild(div3);
 
-       var div4 = document.createElement("div");
+    var div4 = document.createElement("div");
         div4.setAttribute("class", "panel-body");
-          div4.innerHTML = 'message';
-
-
+        div4.innerHTML = val['description'];
         div.appendChild(div4);
 
- test.appendChild(div);
+    test.appendChild(div);
 
 
 
