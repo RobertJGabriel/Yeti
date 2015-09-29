@@ -9,20 +9,10 @@ $(function () {
 
 
     $("#search_bar").submit(function () {
-        alert('s');
-            var myParam = location.search.split('apikey=')[1];
+        var myParam = location.search.split('apikey=')[1];
         window.location = "http://localhost/yeti/search?apikey=" + myParam + "&term=k";
        
     });
-
-    $("#deleteButton").click(function () {
-        alert('ss');
-        ajaxPostRequest("", "/yeti/v1/deleteaccount","");
- 
-        return false; // avoid to execute the actual submit of the form.
-    });
-
-
   
     $("#signin").submit(function () {
        ajaxPostRequest($(this), "/yeti/v1/signin","");
@@ -110,8 +100,6 @@ $(function () {
     }
 
 
-
-
     function ajaxPostRequest(thisObj,url,message){
         console.log(thisObj);
           $.ajax({
@@ -122,7 +110,7 @@ $(function () {
             success: function (data) {
                 console.log(data);
               
-                   alerts(data,message); //Handles log in
+                alerts(data,message); //Handles log in
                 
             }
         });
