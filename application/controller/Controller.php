@@ -144,6 +144,11 @@
                 case "manualImportSearch":
                     $this->search->manualImportSearch();
                     break;
+                case "viewSearch":
+                    header("Location: " . "http://localhost/yeti/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
+                    die();
+                    break;
+                  
                 case "signup":
                     $this->user->register_account();
                     break;
