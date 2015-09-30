@@ -7,8 +7,6 @@
     
     class user{
         var $database;
-        protected static $users_table = "users";
-
         public
         function __construct()   {
             $this->database =  new database();
@@ -143,6 +141,8 @@
             }
 
         }
+
+        
 
         public
         function get_amount_of_users(){

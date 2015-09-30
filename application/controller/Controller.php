@@ -131,14 +131,18 @@
                    
                     $this->apiResponds  = $this->api->getSearches($_GET['apikey'],$term);
                     break;
+                case "getApiCode.json":
+                 
+                 
+              $this->apiResponds  = $this->api->getApiKey();
+                    break;
+
+
                 case "signin":
                     $this->user->sign_in();
                     break;
                 case "manualImportSearch":
                     $this->search->manualImportSearch();
-                    break;
-                case "manualImportEmployee":
-                    $this->search->manualImportEmployee();
                     break;
                 case "signup":
                     $this->user->register_account();

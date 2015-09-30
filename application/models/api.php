@@ -10,6 +10,12 @@
         function __construct() {
             $this->database = new database();
         }
+        public function getApiKey(){
+            $results = array();
+            $results['apikey'] = $_SESSION["apikey"]  ;
+         return   $json = json_encode($results);
+         
+        }
 
         public
         function getUserStates(){
