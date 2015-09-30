@@ -101,7 +101,7 @@ $(function() {
     }
 
     function ajaxGetRequest(urls, message) {
-       alert('bam');
+     
         $.ajax({
             url: urls,
             type: "GET",
