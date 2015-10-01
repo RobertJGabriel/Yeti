@@ -7,7 +7,7 @@
 
         var $username = "root";
         var $password= "";
-        var $host = "localhost";
+        var $host = "localhost:3307";
         var $database = "yeti";
         var $con;
         
@@ -120,15 +120,25 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
         }
 
         public
-        function delete_account($username,$email){
-            $sql_query = "DELETE FROM users WHERE firstName='" . $username . "' AND email='" . $email ."'";
+        function delete_account($id){
+            $sql_query = "DELETE FROM users WHERE id='" . $id ."'";
             $this->runSQL($sql_query);
         }
 
         public
-        function update_account($password,$twitter){
-            $sql_query = "UPDATE users SET password='" . $password   ."' ,twitter='".  $twitter .  "' WHERE id='" . $_SESSION["ID"] . "'";
-            $this->runSQL($sql_query);
+        function update_account($firstName, $lastName, $companyName, $email){
+            
+        $sql;
+
+        $sql = "UPDATE " .self::$users_table." SET ";
+        $sql .= "email= '" . $database->escape_string($email ). "', ";
+        $sql .= "$companyName = '" . $database->escape_string($companyName  ). "', ";
+        $sql .= "firstName= '" . $database->escape_string($firstName ). "', ";
+        $sql .= "lastName= '" . $database->escape_string( $lastName). "' ";
+        $sql .= "WHERE website= '" . $database->escape_string($_SESSION["website"]). "' ";
+
+        return $this->runSQL($sql);
+        
         }
 
         public

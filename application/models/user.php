@@ -7,6 +7,8 @@
     
     class user{
         var $database;
+        protected static $users_table = "users";
+
         public
         function __construct()   {
             $this->database =  new database();
@@ -149,27 +151,33 @@
 
         public
         function delete_account(){
-            $email = $_SESSION["email"];
-            $username = $_SESSION["first_Name"];
-            $this->database->delete_account($username,$email);
-            print_r($username . $email);
+
+        $id = $_SESSION["ID"];
+        $this->database->delete_account($id);
+        $this->logout();
+
         }
 
         public
         function update_account(){
-            $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
-            $twitter =  filter_var($_POST["shareT"], FILTER_SANITIZE_STRING);
-            $this->database->update_account($password,$twitter);
-            $wasItChanged =  $this->database->check_if_password_changed($password);
-            $this->updateTwitter_Session($_POST["shareT"]);
-            
-            if ($wasItChanged != '1' ){
-                echo 'error';
-            } else {
-                echo 'passwordchanged';
-            }
+
+        $firstName  =   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+        $lastName   =   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+        $companyName  =  filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
+        $email  =  filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+
+        $is_it_there =$this->database->check_if_account_exists($email);
+
+        if($is_it_there != '1'){
+           echo("error");
+        }else{
+
+            $this->$database->update_account($firstName, $lastName, $companyName, $email);
 
         }
+
+       
+    }
 
         public
         function updateSearch_Settings(){
