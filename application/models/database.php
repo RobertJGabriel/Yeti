@@ -7,7 +7,7 @@
 
         var $username = "admin1964";
         var $password= "Peanutbutter1993";
-        var $host = "localhost";
+        var $host = "th2y25lz2e";
         var $database = "yeti";
         var $con;
         
