@@ -151,20 +151,15 @@
                     $this->search->manualImportSearch();
                     break;
                 case "viewSearch":
-                    header("Location: " . "http://localhost/yeti/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
+                    header("Location: " . "/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
                     die();
                     break;
-                  
                 case "signup":
                     $this->user->register_account();
                     break;
                 case "signout":
                     $this->user->logout();
                     break;
-                          case "v1":
-                   echo("<h1>jsjsjsj</h1>");
-                    break;
-
                 case "deleteaccount":
                     $this->user->delete_account();
                     $this->user->logout();
