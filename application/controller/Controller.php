@@ -167,9 +167,9 @@
                     break;
                  case "updateAccount":
                  if($this->user->update_account()){
-                    print_r("true");
+                    echo "true" ;
                 }else{
-                    print_r("fail update");
+                    echo "fail update";
                 }
                     break;
 
@@ -180,7 +180,7 @@
                     echo "None";
                 }
 
-            echo  $this->apiResponds;
+            echo  $this->apiResponds . $apiCall;
         }
 
     }
