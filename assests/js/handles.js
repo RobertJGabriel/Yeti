@@ -12,26 +12,29 @@ $(function() {
         window.location = "http://localhost/yeti/search?apikey=" + myParam + "&term=" + searchTerm + "";
         return false; // avoid to execute the actual submit of the form.
     });
-    $("#deleteButton").click(function() {
-        alert('ss');
-        ajaxPostRequest("", "/yeti/v1/deleteaccount", "");
-        return false; // avoid to execute the actual submit of the form.
-    });
+
+    
+
+ 
     $("#signin").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/signin", "");
         return false; // avoid to execute the actual submit of the form.
     });
+    $("#updateAccount").submit(function() {
+        ajaxPostRequest($(this), "/yeti/v1/updateAccount", "");
+        return false; // avoid to execute the actual submit of the form.
+    });
+
+
     $("#signup").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/signup", "");
         return false; // avoid to execute the actual submit of the form.
     });
+    
     // This is for the personal Settings
-    $("#delete_account").submit(function() {
-        ajaxPostRequest($(this), "/yeti/v1/deleteaccount", ""); // the script where you handle the form input.
-        return false; // avoid to execute the actual submit of the form.
-    });
+   
     // This is for the personal Settings
-    $("#update_account").submit(function() {
+    $("#updateAccount").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/updateaccount", "");
         return false; // avoid to execute the actual submit of the form.
     });

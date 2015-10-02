@@ -150,8 +150,12 @@
                     $this->user->delete_account();
                     $this->user->logout();
                     break;
-                 case "updateaccount":
-                    $this->user->update_account();
+                 case "updateAccount":
+                 if($this->user->update_account()){
+                    print_r("true");
+                }else{
+                    print_r("fail update");
+                }
                     break;
 
                 case "updateSearchSettings":

@@ -163,16 +163,16 @@
 
         $firstName  =   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
         $lastName   =   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
-        $companyName  =  filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
         $email  =  filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+        //print_r($email. " ". $lastName." ".$companyName. " ". $firstName. "<br>");
 
         $is_it_there =$this->database->check_if_account_exists($email);
 
-        if($is_it_there != '1'){
-           echo("error");
+        if($is_it_there != '0'){
+           print_r("error");
         }else{
 
-            $this->$database->update_account($firstName, $lastName, $companyName, $email);
+            $this->database->update_account($firstName, $lastName, $email);
 
         }
 

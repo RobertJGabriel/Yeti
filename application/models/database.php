@@ -10,6 +10,7 @@
         var $host = "localhost:3307";
         var $database = "yeti";
         var $con;
+        static protected $users_table = "users";
         
         public
         function __construct()   {
@@ -126,17 +127,17 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
         }
 
         public
-        function update_account($firstName, $lastName, $companyName, $email){
+        function update_account($firstName, $lastName, $email){
             
         $sql;
 
         $sql = "UPDATE " .self::$users_table." SET ";
-        $sql .= "email= '" . $database->escape_string($email ). "', ";
-        $sql .= "$companyName = '" . $database->escape_string($companyName  ). "', ";
-        $sql .= "firstName= '" . $database->escape_string($firstName ). "', ";
-        $sql .= "lastName= '" . $database->escape_string( $lastName). "' ";
-        $sql .= "WHERE website= '" . $database->escape_string($_SESSION["website"]). "' ";
-
+        $sql .= "email= '" . $this->escape_string($email ). "', ";
+        $sql .= "firstName= '" . $this->escape_string($firstName ). "', ";
+        $sql .= "lastName= '" . $this->escape_string( $lastName). "' ";
+        $sql .= "WHERE id= " . $this->escape_string($_SESSION["ID"]);
+        
+        print_r($sql);
         return $this->runSQL($sql);
         
         }
@@ -200,6 +201,12 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
         function runSQL($sql_query){
             return  mysqli_query($this->con,$sql_query);
         }
+
+        public function escape_string($string){
+
+        $escape_string = mysqli_real_escape_string($this->con, $string);
+        return $escape_string;
+    }
 
     }
 
