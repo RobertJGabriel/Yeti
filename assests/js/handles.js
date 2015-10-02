@@ -4,7 +4,7 @@ $(function() {
     var term = getParameterByName('term');
     if (myParam !== '') {
         $("#webresults > *").remove();
-        ajaxGetRequest("/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
+        ajaxGetRequest("/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
     }
 
     ajaxupdateRequest('/yeti/v1/me.json','') ;
@@ -19,7 +19,7 @@ $(function() {
 
 
     $("#updateAccount").submit(function() {
-    ajaxPostRequest($(this), "/yeti/v1/updateAccount", "");
+    ajaxPostRequest($(this), "/v1/updateAccount", "");
     return false; // avoid to execute the actual submit of the form.
     });
 
@@ -51,12 +51,12 @@ $(function() {
     }
 
     $("#signin").submit(function() {
-        ajaxPostRequest($(this), "/yeti/v1/signin", "");
+        ajaxPostRequest($(this), "/v1/signin", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
     $("#signup").submit(function() {
-        ajaxPostRequest($(this), "/yeti/v1/signup", "");
+        ajaxPostRequest($(this), "/v1/signup", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
@@ -65,14 +65,14 @@ $(function() {
     // This is for the personal Settings
     $("#new_search_settings").submit(function() {
         alert('batman');
-        ajaxPostRequest($(this), "/yeti/v1/updateSearchSettings", "");
+        ajaxPostRequest($(this), "/v1/updateSearchSettings", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
     // This is for the personal Settings
     $("#manualImportSearch").submit(function() {
       
-        ajaxPostRequest($(this), "/yeti/v1/manualImportSearch", "true");
+        ajaxPostRequest($(this), "/v1/manualImportSearch", "true");
         return false; // avoid to execute the actual submit of the form.
     });
       
@@ -188,7 +188,7 @@ $(function() {
 
 
         function createCode(){
-           ajaxGetRequest("http://localhost/yeti/v1/getApiCode.json", "test");
+           ajaxGetRequest("/v1/getApiCode.json", "test");
         
         
     }
