@@ -162,7 +162,7 @@
                     $this->user->logout();
                     break;
                           case "v1":
-                   echo("<h1>jsjsjsj</h1>")
+                   echo("<h1>jsjsjsj</h1>");
                     break;
 
                 case "deleteaccount":
