@@ -7,7 +7,7 @@
 
         var $username = "admin1964";
         var $password= "Peanutbutter1964";
-        var $host = "th2y25lz2e.database.windows.net:1433";
+        var $host = "";
         var $database = "yeti";
         var $con;
         
