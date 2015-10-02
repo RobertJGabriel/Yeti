@@ -161,6 +161,10 @@
                 case "signout":
                     $this->user->logout();
                     break;
+                          case "v1":
+                   echo("<h1>jsjsjsj</h1>")
+                    break;
+
                 case "deleteaccount":
                     $this->user->delete_account();
                     $this->user->logout();
