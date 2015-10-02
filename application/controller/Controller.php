@@ -151,9 +151,10 @@
                     $this->search->manualImportSearch();
                     break;
                 case "viewSearch":
-                    header("Location: " . "/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
+                    header("Location: " . "http://localhost/yeti/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
                     die();
                     break;
+                  
                 case "signup":
                     $this->user->register_account();
                     break;
@@ -166,9 +167,9 @@
                     break;
                  case "updateAccount":
                  if($this->user->update_account()){
-                    echo "true" ;
+                    print_r("true");
                 }else{
-                    echo "fail update";
+                    print_r("fail update");
                 }
                     break;
 
@@ -179,7 +180,7 @@
                     echo "None";
                 }
 
-            echo  $this->apiResponds . $apiCall;
+            echo  $this->apiResponds;
         }
 
     }
