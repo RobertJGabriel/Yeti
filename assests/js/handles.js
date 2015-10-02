@@ -16,11 +16,6 @@ $(function() {
         return false; // avoid to execute the actual submit of the form.
     });
 
-    $("#deleteButton").click(function() {
-        alert('ss');
-        ajaxPostRequest("", "/yeti/v1/deleteaccount", "");
-        return false; // avoid to execute the actual submit of the form.
-    });
     
     $("#signin").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/signin", "");
@@ -38,11 +33,6 @@ $(function() {
         return false; // avoid to execute the actual submit of the form.
     });
     
-    // This is for the personal Settings
-    $("#update_account").submit(function() {
-        ajaxPostRequest($(this), "/yeti/v1/updateaccount", "");
-        return false; // avoid to execute the actual submit of the form.
-    });
     
     // This is for the personal Settings
     $("#new_search_settings").submit(function() {
