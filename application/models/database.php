@@ -5,8 +5,8 @@
     
     class database{
 
-        var $username = "root";
-        var $password= "";
+        var $username = "admin1964";
+        var $password= "Peanutbutter1993";
         var $host = "localhost";
         var $database = "yeti";
         var $con;
