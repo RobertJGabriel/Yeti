@@ -6,10 +6,10 @@
     class database{
 
 
-        var $username = "root";
-        var $password= "";
-        var $host = "localhost";
-        var $database = "yeti";
+        var $username = "b34a3bc6bfcecc";
+        var $password= "7c9a7b7114ae4f5";
+        var $host = "us-cdbr-azure-west-c.cloudapp.net";
+        var $database = "yetti4";
         var $con;
         
         public
