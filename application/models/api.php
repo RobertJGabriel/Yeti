@@ -30,10 +30,7 @@
         function getUserinfo(){
 
             $sql = $this->database->getUpdateInfo($_SESSION['ID']);
-      
-
-
- $rows = array();
+            $rows = array();
             while($r = mysqli_fetch_assoc($sql)) {
                 $rows[] = $r;
             }

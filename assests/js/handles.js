@@ -6,7 +6,9 @@ $(function() {
         $("#webresults > *").remove();
         ajaxGetRequest("/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
     }
-    
+
+    ajaxupdateRequest('/yeti/v1/me.json','') ;
+
     $("#search_bar").submit(function() {
         var myParam = getParameterByName('apikey');
         var term = getParameterByName('term');
@@ -22,6 +24,31 @@ $(function() {
     });
 
 
+    function appendUpdate(val) {
+     
+       document.getElementById("firstNameUpdate").value = val['firstName'];
+       document.getElementById("lastNameUpdate").value = val['lastname'];
+       document.getElementById("emailUpdate").value = val['email'];
+
+    }
+    function ajaxupdateRequest(urls, message) {
+
+        $.ajax({
+            url: urls,
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+           
+                console.log(data);
+                jQuery.each(data, function(i, val) {
+                    alert(val);
+                     appendUpdate(val) ;
+               
+                });
+            
+            }
+        });
+    }
 
     $("#signin").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/signin", "");
