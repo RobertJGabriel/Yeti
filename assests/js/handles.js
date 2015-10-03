@@ -4,22 +4,22 @@ $(function() {
     var term = getParameterByName('term');
     if (myParam !== '') {
         $("#webresults > *").remove();
-        ajaxGetRequest("http://yettii.azurewebsites.net/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
+        ajaxGetRequest("/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
     }
 console.log('sss');
-    ajaxupdateRequest('http://yettii.azurewebsites.net/v1/me.json','') ;
+    ajaxupdateRequest('/v1/me.json','') ;
 
     $("#search_bar").submit(function() {
         var myParam = getParameterByName('apikey');
         var term = getParameterByName('term');
         var searchTerm = document.getElementById('search_bar_input').value;
-        window.location = "http://yettii.azurewebsites.net/search?apikey=" + myParam + "&term=" + searchTerm + "";
+        window.location = "/search?apikey=" + myParam + "&term=" + searchTerm + "";
         return false; // avoid to execute the actual submit of the form.
     });
 
 
     $("#updateAccount").submit(function() {
-    ajaxPostRequest($(this), "http://yettii.azurewebsites.net/v1/updateAccount", "");
+    ajaxPostRequest($(this), "/v1/updateAccount", "");
     return false; // avoid to execute the actual submit of the form.
     });
 
@@ -38,7 +38,7 @@ console.log('sss');
             type: "GET",
             dataType: "json",
             success: function(data) {
-           console.log(data);
+           
                 console.log(data);
                 jQuery.each(data, function(i, val) {
                      appendUpdate(val) ;
@@ -52,12 +52,12 @@ console.log('sss');
     }
 
     $("#signin").submit(function() {
-        ajaxPostRequest($(this), "http://yettii.azurewebsites.net/v1/signin", "");
+        ajaxPostRequest($(this), "/v1/signin", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
     $("#signup").submit(function() {
-        ajaxPostRequest($(this), "http://yettii.azurewebsites.net/v1/signup", "");
+        ajaxPostRequest($(this), "/v1/signup", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
@@ -66,7 +66,7 @@ console.log('sss');
     // This is for the personal Settings
     $("#new_search_settings").submit(function() {
         alert('batman');
-        ajaxPostRequest($(this), "http://yettii.azurewebsites.net/v1/updateSearchSettings", "");
+        ajaxPostRequest($(this), "/v1/updateSearchSettings", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
@@ -74,7 +74,7 @@ console.log('sss');
     $("#manualImportSearch").submit(function() {
 
       
-        ajaxPostRequest($(this), "http://yettii.azurewebsites.net/v1/manualImportSearch", "true");
+        ajaxPostRequest($(this), "/v1/manualImportSearch", "true");
 
         return false; // avoid to execute the actual submit of the form.
     });
@@ -195,7 +195,7 @@ console.log('sss');
 
 
         function createCode(){
-           ajaxGetRequest("http://yettii.azurewebsites.net/v1/getApiCode.json", "test");
+           ajaxGetRequest("/v1/getApiCode.json", "test");
         
         
     }
