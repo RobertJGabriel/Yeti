@@ -151,7 +151,7 @@
                     $this->search->manualImportSearch();
                     break;
                 case "viewSearch":
-                    header("Location: " . "http://localhost/yeti/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
+                    header("Location: " . "/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
                     die();
                     break;
                   
