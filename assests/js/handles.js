@@ -45,7 +45,9 @@ console.log('sss');
                
                 });
             
-            }
+            }, error: function(data) {
+          console.log('sss');
+        }
         });
     }
 
@@ -115,7 +117,9 @@ console.log('sss');
             success: function(data) {
                 console.log(data);
                 alerts(data, message); //Handles log in
-            }
+            }, error: function(data) {
+          console.log('sss');
+        }
         });
     }
 
@@ -133,7 +137,9 @@ console.log('sss');
                     createSearchResult(val);
                 });
             
-            }
+            }, error: function(data) {
+          console.log('sss');
+        }
         });
     }
 
