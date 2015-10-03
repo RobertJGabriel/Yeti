@@ -5,12 +5,12 @@
     
     class database{
 
+
         var $username = "root";
         var $password= "";
         var $host = "localhost:3307";
         var $database = "yeti";
         var $con;
-        static protected $users_table = "users";
         
         public
         function __construct()   {

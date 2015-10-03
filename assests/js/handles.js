@@ -15,10 +15,12 @@ $(function() {
         return false; // avoid to execute the actual submit of the form.
     });
 
+
     $("#updateAccount").submit(function() {
     ajaxPostRequest($(this), "/yeti/v1/updateAccount", "");
     return false; // avoid to execute the actual submit of the form.
     });
+
 
 
     $("#signin").submit(function() {
