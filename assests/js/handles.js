@@ -6,14 +6,14 @@ $(function() {
         $("#webresults > *").remove();
         ajaxGetRequest("http://yettii.azurewebsites.net/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
     }
-
+console.log('sss');
     ajaxupdateRequest('http://yettii.azurewebsites.net/v1/me.json','') ;
 
     $("#search_bar").submit(function() {
         var myParam = getParameterByName('apikey');
         var term = getParameterByName('term');
         var searchTerm = document.getElementById('search_bar_input').value;
-        window.location = "search?apikey=" + myParam + "&term=" + searchTerm + "";
+        window.location = "http://yettii.azurewebsites.net/search?apikey=" + myParam + "&term=" + searchTerm + "";
         return false; // avoid to execute the actual submit of the form.
     });
 
@@ -120,7 +120,7 @@ $(function() {
     }
 
     function ajaxGetRequest(urls, message) {
-     
+               console.log(urls);
         $.ajax({
             url: urls,
             type: "GET",
@@ -189,7 +189,7 @@ $(function() {
 
 
         function createCode(){
-           ajaxGetRequest("/v1/getApiCode.json", "test");
+           ajaxGetRequest("http://yettii.azurewebsites.net/v1/getApiCode.json", "test");
         
         
     }
