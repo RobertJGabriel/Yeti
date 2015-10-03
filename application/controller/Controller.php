@@ -14,6 +14,7 @@
         public
         function __construct() {
             session_start();
+            echo PHP_VERSION;
             //Used for Development 
             $this->user = new user();
             $this->search = new search();
