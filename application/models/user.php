@@ -55,7 +55,7 @@
                 $this->database->register_account($firstName,$lastName,$website,$email,$final_password,$createSalt,$companyId);
                 $after = $this->database->count_amount_of_users();
                 $this->createFolder($website);
-                
+                print_r($before + 1 . '     ' . $after);
                 if(($before + 1) == $after){
                     echo 'true';
                 } else {
