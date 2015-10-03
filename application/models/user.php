@@ -44,7 +44,7 @@
             $this->createCompany($companyName);
             $companyId =  $this->database->getCompanyId($companyName);
             $is_it_there =$this->database->check_if_account_exists($email);
-            
+           
             if ($is_it_there != '0' ){
                 echo 'error1';
             } else {
