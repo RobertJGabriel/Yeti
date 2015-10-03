@@ -6,8 +6,8 @@ $(function() {
         $("#webresults > *").remove();
         ajaxGetRequest("/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
     }
-console.log('sss');
-    ajaxupdateRequest('/v1/getusers.json','') ;
+    console.log('sss');
+    ajaxupdateRequest('/v1/me.json','') ;
 
     $("#search_bar").submit(function() {
         var myParam = getParameterByName('apikey');
