@@ -52,7 +52,7 @@
                 $final_password = $this->encrypt_password($password,$createSalt);
                 // Salted Hash
                 $before = $this->database->count_amount_of_users();
-              echo ($firstName. $lastName. $website . $email. $final_password .$createSalt. $companyId);  
+              echo ($firstName. "   <br>   " . $lastName. "   <br>   " . $website ."   <br>   " .  $email. "   <br> " . $final_password ."   <br>   " . $createSalt. $companyId);  
               $this->database->register_account($firstName,$lastName,$website,$email,$final_password,$createSalt,$companyId);
                 $after = $this->database->count_amount_of_users();
                 $this->createFolder($website);
