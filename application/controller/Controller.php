@@ -109,18 +109,18 @@
         function apiCalls($apiCall) {
             $this->apiResponds = null;
             switch ($apiCall) {
-                case "getusers":
+                case "getusers.json":
                     $this->apiResponds =   $this->api->getUserStates();
                     break;
 
-                case "me":
+                case "me.json":
                     $this->apiResponds =   $this->api->getUserinfo();
                     break;
 
-                case "getsearch":
+                case "getsearch.json":
                     $this->apiResponds  = $this->api->getSearchStates();
                     break;
-                case "getStates":
+                case "getStates.json":
                     $this->apiResponds  = $this->api->getSystemStates();
                     echo 'ss';
                     break;

@@ -39,7 +39,7 @@
             $lastName   =   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
             $website    =   filter_var($_POST['website'], FILTER_SANITIZE_STRING);
             $email      =   filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-            $companyName      =   filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
+            $companyName =   filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
             $password   =   filter_var($_POST['password'], FILTER_SANITIZE_STRING);
             $this->createCompany($companyName);
             $companyId =  $this->database->getCompanyId($companyName);
