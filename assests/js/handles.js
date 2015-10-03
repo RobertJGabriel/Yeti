@@ -41,7 +41,6 @@ $(function() {
            
                 console.log(data);
                 jQuery.each(data, function(i, val) {
-                    alert(val);
                      appendUpdate(val) ;
                
                 });
@@ -71,7 +70,6 @@ $(function() {
     
     // This is for the personal Settings
     $("#manualImportSearch").submit(function() {
-      
         ajaxPostRequest($(this), "/yeti/v1/manualImportSearch", "true");
         return false; // avoid to execute the actual submit of the form.
     });
