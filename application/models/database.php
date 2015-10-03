@@ -91,12 +91,7 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
             return $this->runSQL($sql_query);
         }
 
-        public
-        function updateSettings($twitter,$gogoduck,$bing,$google){
-            $sql_query = "UPDATE settings SET twitter='" . $twitter   ."'' ,gogoduck='".  $gogoduck .  "', bing='" . $bing  ."', google='" . $google ."' WHERE companyId=1";
-            $this->runSQL($sql_query);
-        }
-
+    
         public
         function check_if_company_exists($companyName){
             $sql_query = "SELECT count(companyId)  FROM `company` where companyName='" . $companyName ."'";
@@ -144,7 +139,6 @@ public function importSearch($title,$description,$url_or_link,$information,$manu
         $sql .= "lastName= '" . $this->escape_string( $lastName). "' ";
         $sql .= "WHERE id= " . $this->escape_string($_SESSION["ID"]);
         
-        print_r($sql);
         return $this->runSQL($sql);
         
         }
