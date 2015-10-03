@@ -112,6 +112,11 @@
                 case "getusers.json":
                     $this->apiResponds =   $this->api->getUserStates();
                     break;
+
+                case "me.json":
+                    $this->apiResponds =   $this->api->getUserinfo();
+                    break;
+
                 case "getsearch.json":
                     $this->apiResponds  = $this->api->getSearchStates();
                     break;
@@ -131,15 +136,24 @@
                    
                     $this->apiResponds  = $this->api->getSearches($_GET['apikey'],$term);
                     break;
+                case "getApiCode.json":
+                 
+                 
+              $this->apiResponds  = $this->api->getApiKey();
+                    break;
+
+
                 case "signin":
                     $this->user->sign_in();
                     break;
                 case "manualImportSearch":
                     $this->search->manualImportSearch();
                     break;
-                case "manualImportEmployee":
-                    $this->search->manualImportEmployee();
+                case "viewSearch":
+                    header("Location: " . "http://localhost/yeti/search?apikey=" .  $_SESSION["apikey"] . "&term=bat" );
+                    die();
                     break;
+                  
                 case "signup":
                     $this->user->register_account();
                     break;

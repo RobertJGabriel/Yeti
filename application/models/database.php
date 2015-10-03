@@ -58,6 +58,13 @@
             return  $displayAsString[0];
         }
 
+        public function getUpdateInfo($userId){
+
+            $sql_query = "SELECT `firstName`, `lastname`, `email` FROM `users` WHERE id='" . $userId . "'";
+            return $this->runSQL($sql_query);
+         
+        }
+
         public
         function register_account($firstName,$lastName,$website,$email,$password,$salt,$companyId){
             $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`,`salt`,`companyId`) VALUES (

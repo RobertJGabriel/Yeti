@@ -1,10 +1,12 @@
 $(function() {
+    createCode();
     var myParam = getParameterByName('apikey');
     var term = getParameterByName('term');
     if (myParam !== '') {
         $("#webresults > *").remove();
-        ajaxGetRequest("/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term + "");
+        ajaxGetRequest("/yeti/v1/getsearches.json?apikey=" + myParam + "&term=" + term ,"");
     }
+    
     $("#search_bar").submit(function() {
         var myParam = getParameterByName('apikey');
         var term = getParameterByName('term');
@@ -13,49 +15,38 @@ $(function() {
         return false; // avoid to execute the actual submit of the form.
     });
 
-    
+    $("#updateAccount").submit(function() {
+    ajaxPostRequest($(this), "/yeti/v1/updateAccount", "");
+    return false; // avoid to execute the actual submit of the form.
+    });
 
- 
+
     $("#signin").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/signin", "");
         return false; // avoid to execute the actual submit of the form.
     });
-    $("#updateAccount").submit(function() {
-        ajaxPostRequest($(this), "/yeti/v1/updateAccount", "");
-        return false; // avoid to execute the actual submit of the form.
-    });
-
-
+    
     $("#signup").submit(function() {
         ajaxPostRequest($(this), "/yeti/v1/signup", "");
         return false; // avoid to execute the actual submit of the form.
     });
     
-    // This is for the personal Settings
-   
-    // This is for the personal Settings
-    $("#updateAccount").submit(function() {
-        ajaxPostRequest($(this), "/yeti/v1/updateaccount", "");
-        return false; // avoid to execute the actual submit of the form.
-    });
+    
+    
     // This is for the personal Settings
     $("#new_search_settings").submit(function() {
         alert('batman');
         ajaxPostRequest($(this), "/yeti/v1/updateSearchSettings", "");
         return false; // avoid to execute the actual submit of the form.
     });
+    
     // This is for the personal Settings
     $("#manualImportSearch").submit(function() {
-        alert('batman is cool and this worked ?');
-        ajaxPostRequest($(this), "/yeti/v1/manualImportSearch", "");
+      
+        ajaxPostRequest($(this), "/yeti/v1/manualImportSearch", "true");
         return false; // avoid to execute the actual submit of the form.
     });
-    // This is for the personal Settings
-    $("#manualImportEmployee").submit(function() {
-        alert('batman is cool and this worked, employyee ?');
-        ajaxPostRequest($(this), "/yeti/v1/manualImportEmployee", "");
-        return false; // avoid to execute the actual submit of the form.
-    });
+      
     // Used for checking the url 
     function regexUrlextensioncheck(n) {
         {
@@ -67,17 +58,19 @@ $(function() {
     }
 
     function getTable() {}
-    var el = document.getElementById("plusInput");
-    el.addEventListener("click", createInput);
+
+        var el = document.getElementById("plusInput");
+            el.addEventListener("click", createInput);
 
     function createInput() {
         var div = document.createElement("div");
-        div.setAttribute("class", "form-group");
+            div.setAttribute("class", "form-group");
+        
         var input = document.createElement("input");
-        input.setAttribute("type", "text");
-        input.setAttribute("class", "form-control floating-label");
-        input.setAttribute("name", "information[]");
-        input.setAttribute("placeholder", "Something Extra");
+            input.setAttribute("type", "text");
+            input.setAttribute("class", "form-control floating-label");
+            input.setAttribute("name", "information[]");
+            input.setAttribute("placeholder", "Something Extra");
         div.appendChild(input);
         document.getElementById("addedInput").appendChild(div);
     }
@@ -96,16 +89,20 @@ $(function() {
         });
     }
 
-    function ajaxGetRequest(url, message) {
+    function ajaxGetRequest(urls, message) {
+     
         $.ajax({
-            url: url,
+            url: urls,
             type: "GET",
             dataType: "json",
             success: function(data) {
-                console.log('aa' + data);
+           
+                console.log(data);
                 jQuery.each(data, function(i, val) {
+                    console.log('hi');
                     createSearchResult(val);
                 });
+            
             }
         });
     }
@@ -143,7 +140,7 @@ $(function() {
     }
 
     function alerts(status, message) {
-        $("#alert > *").remove();
+        $("#alerts > *").remove();
         switch (status) {
             case "true":
                 createAlertDiv("Awesome, Hold on two seconds", "success");
@@ -156,6 +153,15 @@ $(function() {
                 createAlertDiv("password Changed", "success");
                 break;
         }
+    }
+
+
+
+
+        function createCode(){
+           ajaxGetRequest("http://localhost/yeti/v1/getApiCode.json", "test");
+        
+        
     }
 
     function getParameterByName(name) {

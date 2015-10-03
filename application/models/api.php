@@ -6,9 +6,16 @@
     
     class api{
         var $database;
+
         public
         function __construct() {
             $this->database = new database();
+        }
+        public function getApiKey(){
+            $results = array();
+            $results['apikey'] = $_SESSION["apikey"]  ;
+         return   $json = json_encode($results);
+         
         }
 
         public
@@ -17,6 +24,24 @@
             $results = array();
             $results['amoutofUsers'] = $sql  ;
             return $json = json_encode($results);
+        }
+
+        public
+        function getUserinfo(){
+
+            $sql = $this->database->getUpdateInfo($_SESSION['ID']);
+      
+
+
+ $rows = array();
+            while($r = mysqli_fetch_assoc($sql)) {
+                $rows[] = $r;
+            }
+
+            return json_encode($rows);
+
+
+
         }
 
         public

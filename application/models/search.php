@@ -173,6 +173,7 @@ print_r($this->totalResults);
             }
             $information = json_encode($information);
             $this->database->importSearch($title,$description,$url_or_link,$information,1,$_SESSION["companyId"]);
+            return 'true';
         }
 
         function displayTable(){
