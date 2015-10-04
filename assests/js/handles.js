@@ -168,6 +168,7 @@ $(function() {
    
 
     function createSearchResult(val) {
+        console.log( val['title']);
    if ( val['title'] !== "undefined"){
 
         var test = document.getElementById('webresults');
