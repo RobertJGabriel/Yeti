@@ -35,12 +35,12 @@
 
         public
         function register_account(){
-            $firstName  =   $_POST['firstName'];
-            $lastName   =  $_POST['lastName'];
-            $website    =   $_POST['website'];
-            $email      =   $_POST['email'];
-            $companyName =   $_POST['companyName'];
-            $password   =   $_POST['password'];
+            $firstName  =   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+            $lastName   =   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+            $website    =   filter_var($_POST['website'], FILTER_SANITIZE_STRING);
+            $email      =   filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+            $companyName =   filter_var($_POST['companyName'], FILTER_SANITIZE_STRING);
+            $password   =   filter_var($_POST['password'], FILTER_SANITIZE_STRING);
             $this->createCompany($companyName);
             $companyId =  $this->database->getCompanyId($companyName);
             $is_it_there =$this->database->check_if_account_exists($email);
@@ -52,8 +52,7 @@
                 $final_password = $this->encrypt_password($password,$createSalt);
                 // Salted Hash
                 $before = $this->database->count_amount_of_users();
-              echo ($firstName. "   <br>   " . $lastName. "   <br>   " . $website ."   <br>   " .  $email. "   <br> " . $final_password ."   <br>   " . $createSalt. $companyId);  
-              $this->database->register_account($firstName,$lastName,$website,$email,$final_password,$createSalt,$companyId);
+                $this->database->register_account($firstName,$lastName,$website,$email,$final_password,$createSalt,$companyId);
                 $after = $this->database->count_amount_of_users();
                 $this->createFolder($website);
                 if(($before + 1) == $after){
