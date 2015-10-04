@@ -64,7 +64,7 @@
                     $rows[] = $r;
                 }
                 $rows[] =  $this->search->duckduckgo($term);
-
+  $rows[] =  $this->search->google($term);
 
                 return json_encode($rows);
             } else {

@@ -1,5 +1,5 @@
 $(function() {
-    createCode();
+    //createCode();
     var myParam = getParameterByName('apikey');
     var term = getParameterByName('term');
     if (myParam !== '') {
@@ -41,7 +41,7 @@ $(function() {
 
 
     $("#updateAccount").submit(function() {
-    ajaxPostRequest($(this), "/v1/updateAccount", "");
+    ajaxPostRequest($(this), "/v1/updateAccount", "Account Updated");
     return false; // avoid to execute the actual submit of the form.
     });
 
@@ -165,21 +165,23 @@ $(function() {
         });
     }
 
-    function appendSearchResult(val) {
-        var ul = document.getElementById("popluarSearches");
-        var li = document.createElement("li");
-        li.appendChild(document.createTextNode(val['description']));
-        ul.appendChild(li);
-    }
+   
 
     function createSearchResult(val) {
+   if ( val['title'] !== "undefined"){
+
         var test = document.getElementById('webresults');
         var div = document.createElement("div");
+
+
+
         div.setAttribute("class", "panel panel-success");
+    
         div.setAttribute("role", "alert");
         div.setAttribute("id", "");
         var a = document.createElement('a');
-        var linkText = document.createTextNode(val['title']);
+        var linkText =  document.createElement('p');
+        linkText.innerHTML = val['title'];
         a.appendChild(linkText);
         a.title = val['title'];
         a.href = val['url'];
@@ -194,7 +196,14 @@ $(function() {
         div4.setAttribute("class", "panel-body");
         div4.innerHTML = val['description'];
         div.appendChild(div4);
+
+        var div5 = document.createElement("span");
+        div5.setAttribute("class", "label label-info");
+        div5.innerHTML = val['search'];
+        div.appendChild(div5);
+
         test.appendChild(div);
+    }
     }
 
     function alerts(status, message) {

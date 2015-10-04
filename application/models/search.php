@@ -79,14 +79,15 @@ print_r($this->totalResults);
             $title = $this->duckduckgoResults->Heading;
             $url = $this->duckduckgoResults->RelatedTopics[0]->FirstURL;
             $description =$this->duckduckgoResults->RelatedTopics[0]->Text;
-      $a['title'] = $title;
-      $a['description']= $description;
+            $a['title'] = $title;
+        $a['description']= $description;
       $a['url'] = $url;
-            array_push($a,$a['title']);
-             array_push($a,$a['description']);
-              array_push($a,$a['url']);
+                    $a['search'] =  'duckduckgo' ;
 
-         
+                    array_push($a,$a['title']);
+                    array_push($a,$a['description']);
+                    array_push($a,$a['url']);
+                    array_push($a,$a['search']);
 
           return    $a;
         }
@@ -98,31 +99,34 @@ print_r($this->totalResults);
         // -- Purpose : Searches google results and returns it from the api
         public
         function google($search_Term){
+            $a = array();
             $query = $search_Term;
             $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=".$query;
             $body = file_get_contents($url,0);
             $json = json_decode($body);
             $resultStr = '';
             for($x=0;$x<count($json->responseData->results);$x++){
-                $resultStr = "<ul class='nav nav-tabs nav-stacked well' ><li><div class='panel panel-primary'><div class='panel-heading'><h3 class='panel-title'><a href='".   $json->responseData->results[$x]->url .  "'>" . $json->responseData->results[$x]->title.   "</a></h3></div><div class='panel-body'><h5><a href='".    $json->responseData->results[$x]->visibleUrl .  "'>" . $json->responseData->results[$x]->visibleUrl.   "</a></h5><p>" .  $json->responseData->results[$x]->content  .   "</p><span class='label label-success'>Google</span></li>    </div></div></ul>" ;
-                array_push( $this->results, $resultStr );
+
+
+                    $a['title'] = $json->responseData->results[$x]->title;
+                    $a['description']= $json->responseData->results[$x]->content ;
+                    $a['url'] =     $json->responseData->results[$x]->url ;
+                    $a['search'] =  'google' ;
+
+                    array_push($a,$a['title']);
+                    array_push($a,$a['description']);
+                    array_push($a,$a['url']);
+                    array_push($a,$a['search']);
             }
 
+
+              return    $a;
 
             //  echo $resultStr;
         }
 
 
-        // -- Function Name : orderBy
-        // -- Params : $data, $field
-        // -- Purpose : 
-        public
-        function orderBy($data, $field)        {
-            $code = "return strnatcmp(\$a['$field'], \$b['$field']);";
-            usort($data, create_function('$a,$b', $code));
-            return $data;
-        }
-
+      
 
         // -- Function Name : bing
         // -- Params : $type,$search_Term
