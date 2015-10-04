@@ -52,12 +52,12 @@ $(function() {
     }
 
     $("#signin").submit(function() {
-        ajaxPostRequest($(this), "/v1/signin", "");
+        ajaxPostRequest($(this), "/v1/signin", "true");
         return false; // avoid to execute the actual submit of the form.
     });
     
     $("#signup").submit(function() {
-        ajaxPostRequest($(this), "/v1/signup", "");
+        ajaxPostRequest($(this), "/v1/signup", "true");
         return false; // avoid to execute the actual submit of the form.
     });
     
