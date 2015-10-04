@@ -113,8 +113,8 @@ $(function() {
 
     function getTable() {}
 
-      //  var el = document.getElementById("plusInput");
-        //    el.addEventListener("click", createInput);
+        var el = document.getElementById("plusInput");
+            el.addEventListener("click", createInput);
 
     function createInput() {
         var div = document.createElement("div");
