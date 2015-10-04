@@ -189,6 +189,7 @@ $(function() {
                 createAlertDiv("password Changed", "success");
                 break;
         }
+        $('#confirm').modal('show'); 
     }
 
 
