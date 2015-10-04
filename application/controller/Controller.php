@@ -137,6 +137,10 @@
                       }
                    
                     $this->apiResponds  = $this->api->getSearches($_GET['apikey'],$term);
+                   $this->apiResponds  .= $this->search->duckduckgo($term);
+
+
+
                     break;
                 case "getApiCode.json":
                  

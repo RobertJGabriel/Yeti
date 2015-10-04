@@ -68,18 +68,27 @@ print_r($this->totalResults);
         // -- Purpose : Search go go duck and return the results.
         public
         function duckduckgo($search_Term){
+            $a = array();
+
+
             $requestUri = "http://api.duckduckgo.com/?q='$search_Term'&format=json";
             $response = file_get_contents($requestUri, 0);
             // Decode the response. 
             $this->duckduckgoResults = json_decode($response);
             $resultStr = '';
-            //  $this->renameKey();     
             $title = $this->duckduckgoResults->Heading;
             $url = $this->duckduckgoResults->RelatedTopics[0]->FirstURL;
-            $text =$this->duckduckgoResults->RelatedTopics[0]->Text;
-            $resultStr .= "<ul class='nav nav-tabs nav-stacked well fadeIn' ><li><div class='panel panel-warning'><div class='panel-heading'><h3 class='panel-title'><a href='".   $url .  "'>" . $title.   "</a></h3></div><div class='panel-body'><h5><a href='".   $url .  "'>" .$url.   "</a></h5><p>" .  $text  .   "</p><span class='label label-warning'>DuckDuckGo</span></li></div></div></ul>" ;
-            array_push( $this->results,$resultStr); // Adds the search to the array for sorting later.
-            //  echo $resultStr;
+            $description =$this->duckduckgoResults->RelatedTopics[0]->Text;
+      $a['title'] = $title;
+      $a['description']= $description;
+      $a['url'] = $url;
+            array_push($a,$a['title']);
+             array_push($a,$a['description']);
+              array_push($a,$a['url']);
+
+         
+
+          return    json_encode($a);
         }
 
 

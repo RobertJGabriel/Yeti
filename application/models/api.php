@@ -6,10 +6,11 @@
     
     class api{
         var $database;
-
+        
         public
         function __construct() {
             $this->database = new database();
+
         }
         public function getApiKey(){
             $results = array();
