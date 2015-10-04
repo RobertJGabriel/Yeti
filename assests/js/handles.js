@@ -27,11 +27,11 @@ $(function() {
             url: urls,
             type: "GET",
             success: function(data) {
-         alert(data);
+
             document.getElementById("codeiscool").value = data;
             
             }, error: function(data) {
-         alert(data);
+
             document.getElementById("codeiscool").value = data;
       
         }

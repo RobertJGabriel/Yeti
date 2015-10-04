@@ -88,7 +88,7 @@ print_r($this->totalResults);
 
          
 
-          return    json_encode($a);
+          return    $a;
         }
 
 

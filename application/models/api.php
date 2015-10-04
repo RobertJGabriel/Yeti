@@ -1,15 +1,17 @@
 <?php
     include_once("application/models/database.php");
+    include_once("application/models/search.php");
     // -- Class Name : api
     // -- Purpose : 
     // -- Created On : 
     
     class api{
-        var $database;
-        
+        var $database,$search;
+
         public
         function __construct() {
             $this->database = new database();
+                     $this->search = new search();
 
         }
         public function getApiKey(){
@@ -61,6 +63,8 @@
                 while($r = mysqli_fetch_assoc($sql)) {
                     $rows[] = $r;
                 }
+                $rows[] =  $this->search->duckduckgo($term);
+
 
                 return json_encode($rows);
             } else {
