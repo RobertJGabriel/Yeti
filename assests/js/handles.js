@@ -9,6 +9,9 @@ $(function() {
     console.log('sss');
     ajaxupdateRequest('/v1/me.json','') ;
 
+    getCodeLinkRequest('/v1/getCode','');
+
+
     $("#search_bar").submit(function() {
         var myParam = getParameterByName('apikey');
         var term = getParameterByName('term');
@@ -16,6 +19,25 @@ $(function() {
         window.location = "/search?apikey=" + myParam + "&term=" + searchTerm + "";
         return false; // avoid to execute the actual submit of the form.
     });
+
+//Hack again but poor coding i know :'('
+    function getCodeLinkRequest(urls, message) {
+
+        $.ajax({
+            url: urls,
+            type: "GET",
+            success: function(data) {
+         alert(data);
+            document.getElementById("codeiscool").value = data;
+            
+            }, error: function(data) {
+         alert(data);
+            document.getElementById("codeiscool").value = data;
+      
+        }
+        });
+    }
+
 
 
     $("#updateAccount").submit(function() {

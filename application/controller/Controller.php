@@ -148,7 +148,19 @@
               $this->apiResponds  = $this->api->getApiKey();
                     break;
 
+//hack for the moment,  i built this :-o needs a rebuild
+                case "getCode":
+                echo "
+                <form action='http://yettii.azurewebsites.net/" ."/search?apikey=" .  $_SESSION["apikey"] . "&term=Howdeep is your love" ."'>
+  <input type='text' name='term' value='Search the world with yeti'>
+  <br>
 
+  <input type='submit' value='Submit'>
+</form>
+
+
+";
+                break;
                 case "signin":
                     $this->user->sign_in();
                     break;
