@@ -67,8 +67,8 @@
 
         public
         function register_account($firstName,$lastName,$website,$email,$password,$salt,$companyId){
-            $sql_query = "INSERT INTO `users`(`firstName`) VALUES (
-       '" . $firstName  ."')";
+            $sql_query = "INSERT INTO `users`(`firstName`,`lastName`,`website`, `email`, `password`,`salt`,`twitter`,`companyId`) VALUES (
+       '" . $firstName  ."','" . $lastName  ."','" . $website  ."','" . $email  ."','" . $password  ."','".  $salt ."',0,'". $companyId .  "')";
             $this->runSQL($sql_query);
         }
 
