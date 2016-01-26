@@ -6,86 +6,103 @@
     // -- Created On : 
     
     class api{
+        
         var $database,$search;
 
-        public
-        function __construct() {
+// -- Function Name : __construct
+// -- Params : 
+// -- Purpose : 
+        public  function __construct() {
             $this->database = new database();
-                     $this->search = new search();
-
+            $this->search = new search();
         }
+
+
+// -- Function Name : getApiKey
+// -- Params : 
+// -- Purpose :         
         public function getApiKey(){
             $results = array();
             $results['apikey'] = $_SESSION["apikey"]  ;
-         return   $json = json_encode($results);
-         
+            return   $json = json_encode($results);
         }
 
-        public
-        function getUserStates(){
+
+
+// -- Function Name : getUserStates
+// -- Params : 
+// -- Purpose : 
+        public function getUserStates(){
             $sql = $this->database->count_amount_of_users();
             $results = array();
             $results['amoutofUsers'] = $sql  ;
             return $json = json_encode($results);
         }
 
-        public
-        function getUserinfo(){
 
+// -- Function Name : getUserinfo
+// -- Params : 
+// -- Purpose : 
+        public   function getUserinfo(){
             $sql = $this->database->getUpdateInfo($_SESSION['ID']);
             $rows = array();
             while($r = mysqli_fetch_assoc($sql)) {
                 $rows[] = $r;
             }
-
             return json_encode($rows);
-
-
-
         }
 
-        public
-        function getSearchStates(){
+
+
+// -- Function Name : getSearchStates
+// -- Params : 
+// -- Purpose : 
+        public  function getSearchStates(){
             $sql = $this->database->count_amount_of_searches();
             $results = array();
             $results['numberofSearches'] = $sql ;
             return $json = json_encode($results);
         }
 
-        public
-        function getSearches($key,$term){
+
+// -- Function Name : getSearches
+// -- Params : $key,$term
+// -- Purpose : 
+        public  function getSearches($key,$term){
             $companyId = $this->database->getCompanyByKey($key);
             
             if ($companyId !== ""){
                 $sql = $this->database->getSearch($companyId,$term);
-          
                 $rows = array();
                 while($r = mysqli_fetch_assoc($sql)) {
                     $rows[] = $r;
                 }
-                $rows[] =  $this->search->duckduckgo($term);
-  $rows[] =  $this->search->google($term);
 
+                $rows[] =  $this->search->duckduckgo($term);
+                $rows[] =  $this->search->google($term);
                 return json_encode($rows);
             } else {
-           return json_encode('none');
+                return json_encode('none');
             }
-
         }
 
-        public
-        function getPopluarSearches(){
+
+// -- Function Name : getPopluarSearches
+// -- Params : 
+// -- Purpose : 
+        public  function getPopluarSearches(){
             $sql = $this->database->getPopluarSearches();
             $rows = array();
             while($r = mysqli_fetch_assoc($sql)) {
                 $rows[] = $r;
             }
-
             return json_encode($rows);
         }
 
-        public
-        function getSystemStates(){
+// -- Function Name : getSystemStates
+// -- Params : 
+// -- Purpose : 
+        public   function getSystemStates(){
             $sql2 = $this->database->count_amount_of_users();
             $sql = $this->database->count_amount_of_searches();
             $results = array();
@@ -96,4 +113,4 @@
 
     }
 
-    ?>
+?>

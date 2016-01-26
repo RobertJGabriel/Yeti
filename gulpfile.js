@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify');
 
 
 gulp.task('less', function () {
-    gulp.src('assests/css/styles.less')
+    gulp.src('assets/css/styles.less')
         .pipe(less()
             .on('error', gutil.log)
             .on('error', gutil.beep)
@@ -15,20 +15,19 @@ gulp.task('less', function () {
                 console.log('err', err);
                 var pathToFile = err.fileName.split('\\');
                 file = pathToFile[pathToFile.length - 1];
-                // say.speak('Albert', 'Less is fucked---' + file + '--- Line ' + err.lineNumber);
             })
         )
         .pipe(minifyCSS({
             keepSpecialComments: 1
         }))
-        .pipe(gulp.dest('assests/css/'));
+        .pipe(gulp.dest('assets/css/'));
 });
 
 
 gulp.task('compressJs', function () {
-    return gulp.src('assests/js/site.js')
+    return gulp.src('assets/js/site.js')
         .pipe(uglify())
-        .pipe(gulp.dest('assests/js/'));
+        .pipe(gulp.dest('assets/js/'));
 });
 
 gulp.task('build', ['less', 'compressJs']);
