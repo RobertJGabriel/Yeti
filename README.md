@@ -70,3 +70,15 @@ Then add the following
 - Set it to: ``` %AppData%\npm\node_modules ```
 - Close CMD, and Re-Open to get the new ENV variables
 - Running ``` npm ls ``` and ``` npm ls -g ```shows that they are installed, but the CMD can not find them due to the missing link.
+
+
+#Screenshot
+###Home
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/home.png "Yeti")
+###Panel
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/panel.png "Yeti")
+###Settings
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/update.png "Yeti")
+###Search
+![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/search.png "Yeti")
+
