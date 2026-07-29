@@ -1,41 +1,53 @@
+# Yeti
 
-![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/headerYeti.jpg "Yeti")
+![Yeti](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/headerYeti.jpg "Yeti")
 
+> A search engine framework — add search to your site with one line of code.
 
-#About
-Yeti is an search engine framwork. It is designed to allow users to create a search engine for the there site in a amatter of seconds. Allowing results from different source. All by adding a line of code.
+Yeti lets you stand up a search engine for your own site in seconds, pulling
+results from several sources at once.
 
+| | |
+| --- | --- |
+| Built with | PHP 5.5, JavaScript, Bootstrap, HTML5, Ajax, Material Bootstrap |
+| Version | 0.4.1 |
+| State | Alpha |
 
-# Information
-#####Built in : PHP5.5, Javascript, Bootstrap, Html5, Ajax, Material Bootstrap
-#####Version Number : 0.4.1
-#####State : Alpha
-#####Declarative Comments Format : Read more
-#####Technical Notes : Read More
+## Requirements
 
+- [Node.js](http://nodejs.org/) for the build
+- PHP 5.5 and a web server
+- MySQL
 
+## Setup
 
-#Set Up
-**Prerequisites:** [Node](http://nodejs.org/).
-- Clone this project to your htdocs folder ``` git clone https://github.com/RobertJGabriel/Yeti.git ```
-- Navigate to the yeti folder.
-- Run ``` npm install ```
-- Import yeti.sql into a database.
-- Open up Setting.php and add in your information for the database connection.
-- All done, Just finsihed [here](http://localhost/yeti)
+1. Clone the project into your `htdocs` folder:
 
-## Build Commands
-- ``` gulp build  ``` : Builds both the javascript and less files
-- ``` gulp less  ``` : Build the less files.
-- ``` gulp compressJs  ``` : Builds the javascript file.
+   ```sh
+   git clone https://github.com/RobertJGabriel/Yeti.git
+   ```
 
-#Api Calls
+2. Navigate into the `yeti` folder.
+3. Run `npm install`.
+4. Import `yeti.sql` into a database.
+5. Open `Setting.php` and fill in your database connection details.
+6. Done — visit <http://localhost/yeti>.
+
+## Build commands
+
+| Command | What it does |
+| --- | --- |
+| `gulp build` | Builds both the JavaScript and Less files |
+| `gulp less` | Builds the Less files |
+| `gulp compressJs` | Builds the JavaScript file |
+
+# Api Calls
 Currently the apis are called used the following url structure. With a base url of 
-###Base Url 
+### Base Url
 ```
 http://localhost/yeti/
 ```
-##Calls 
+## Calls
 Then add the following 
 
 ```
@@ -63,8 +75,8 @@ Then add the following
 /v1/signout
 ```
 
-#Problems 
-##Windows
+# Problems
+## Windows
 ### Gulp Command not found - error after installing gulp
 - Create an environmental variable called NODE_PATH
 - Set it to: ``` %AppData%\npm\node_modules ```
@@ -72,13 +84,17 @@ Then add the following
 - Running ``` npm ls ``` and ``` npm ls -g ```shows that they are installed, but the CMD can not find them due to the missing link.
 
 
-#Screenshot
-###Home
+# Screenshot
+### Home
 ![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/home.png "Yeti")
-###Panel
+### Panel
 ![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/panel.png "Yeti")
-###Settings
+### Settings
 ![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/update.png "Yeti")
-###Search
+### Search
 ![YETI](https://github.com/RobertJGabriel/Yeti/blob/master/assets/img/banner/readme/search.png "Yeti")
 
+
+## License
+
+No licence file. All rights reserved unless stated otherwise.
